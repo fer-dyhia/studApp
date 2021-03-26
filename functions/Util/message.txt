@@ -1,0 +1,44 @@
+C:\Users\ferha\Desktop\socialNetwork\functions\Handlers\data.js
+  80:20  error  Parsing error: Unexpected token ..
+
+C:\Users\ferha\Desktop\socialNetwork\functions\Handlers\messages.js
+  2:8  error  'admin' is assigned a value but never used  no-unused-vars
+
+C:\Users\ferha\Desktop\socialNetwork\functions\Handlers\users.js
+  349:25  error  Parsing error: Unexpected token ..
+
+C:\Users\ferha\Desktop\socialNetwork\functions\Util\admin.js
+  6:1  error  This line has a length of 1750. Maximum allowed is 80  max-len
+  7:1  error  This line has a length of 82. Maximum allowed is 80    max-len
+
+C:\Users\ferha\Desktop\socialNetwork\functions\db_schema.js
+  1:7  error  'db' is assigned a value but never used  no-unused-vars
+
+C:\Users\ferha\Desktop\socialNetwork\functions\index.js
+    3:7   error  'bodyParser' is assigned a value but never used         no-unused-vars
+   17:3   error  'signIn' is assigned a value but never used             no-unused-vars
+   20:3   error  'getfollowingUsers' is assigned a value but never used  no-unused-vars
+   21:3   error  'forgotPassword' is assigned a value but never used     no-unused-vars
+   34:3   error  'NotifLikeData' is assigned a value but never used      no-unused-vars
+   50:7   error  'port' is assigned a value but never used               no-unused-vars
+   98:14  error  'db' is not defined                                     no-undef
+  106:22  error  'db' is not defined                                     no-undef
+  124:14  error  'db' is not defined                                     no-undef
+  136:14  error  'db' is not defined                                     no-undef
+  144:22  error  'db' is not defined                                     no-undef
+  166:23  error  'db' is not defined                                     no-undef
+  167:16  error  'db' is not defined                                     no-undef
+  173:30  error  'db' is not defined                                     no-undef
+  186:21  error  'db' is not defined                                     no-undef
+  187:14  error  'db' is not defined                                     no-undef
+  193:28  error  'db' is not defined                                     no-undef
+  195:20  error  'db' is not defined                                     no-undef
+  202:28  error  'db' is not defined                                     no-undef
+  204:20  error  'db' is not defined                                     no-undef
+  211:28  error  'db' is not defined                                     no-undef
+
+npm ERR! Failed at the functions@ lint script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\ferha\AppData\Roaming\npm-cache\_logs\2021-03-25T19_33_23_550Z-debug.log
