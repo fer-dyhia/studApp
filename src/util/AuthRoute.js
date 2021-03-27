@@ -9,6 +9,8 @@ import {
   } from "@react-firebase/auth";
 
 const AuthRoute = ({component: Component ,...rest}) => {
+    const user=useSelector((state)=>state.user)
+    console.log(user.authenticated)
     
     return(
         <FirebaseAuthConsumer>
@@ -18,7 +20,7 @@ const AuthRoute = ({component: Component ,...rest}) => {
           
            
             
-            if(isSignedIn){
+            if(isSignedIn|user.authenticated){
                 return <Component {...props} />
 
             }else{

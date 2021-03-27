@@ -33,6 +33,7 @@
     "react-scripts": "4.0.2",
     "react-social-login-buttons": "^3.1.2",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-persist-transform-filter": "0.0.20",
     "redux-thunk": "^2.3.0",
@@ -62,7 +63,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000/socialapp-c6ffe/us-central1/app",
+  "proxy": "https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app",
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",

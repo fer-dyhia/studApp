@@ -14,7 +14,7 @@ export const getPosts = (dispatch, user) => {
 export const submitPost = (post, user, dispatch) => {
     const Post = {
         username: user.credentials.username,
-
+        userImage:user.credentials.imageUrl,
         body: post.body,
         image: post.image != '' ? post.image : '',
     }

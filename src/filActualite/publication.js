@@ -90,20 +90,24 @@ export default function Publication(props) {
     return (
         <div   >
     <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-           < FaceSharpIcon />
-          </Avatar>
-        }
-        title={props.post.username}
-        subheader={moment(props.post.createdAt).startOf('second').fromNow()}
-        action={
-          <IconButton aria-label="supprimer" onClick={suppPostUser} className={classes.supp}>
-            <DeleteIcon />
-          </IconButton>
-        }
-      />
+       {
+         <CardHeader
+         avatar={
+           <Avatar aria-label="recipe" className={classes.avatar}>
+            < FaceSharpIcon />
+           </Avatar>
+         }
+         title={props.post.username}
+         subheader={moment(props.post.createdAt).startOf('second').fromNow()}
+         action={props.post.username==user.credentials.username ?
+           <IconButton aria-label="supprimer" onClick={suppPostUser} className={classes.supp}>
+             <DeleteIcon />
+           </IconButton> :null
+         }
+       />
+
+      } 
+     
 
       <CardContent>
         
@@ -118,6 +122,7 @@ export default function Publication(props) {
         <Typography variant="body2" className={classes.couleurtexte} component="p">
          {props.post.body}
         </Typography>
+        {props.post.imageUrl!=""?<img src={props.post.imageUrl}></img>:null}
       </CardContent>
 
       <CardActions disableSpacing className={classes.reaction}  >

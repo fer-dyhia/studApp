@@ -6,19 +6,19 @@ import userReducer from '../Reducers/userReducer'
 import postsReducer from '../Reducers/postsReducer'
 import dataReducer from '../Reducers/dataReducer'
 import { createFilter, createBlacklistFilter } from 'redux-persist-transform-filter';
+import {logger} from "redux-logger"
 
 
-const middleware = [thunk]
+const middleware = [thunk,logger]
 
-const saveSubsetBlacklistFilter = createBlacklistFilter(
-    'user',
-    ['OnlineUsers']
-  );
+
 
 const persistConfig = {
     key: 'root',
     storage,
+    whitelist: ['user']
 }
+
 
 const reducers = combineReducers({
     user: userReducer,
@@ -35,11 +35,7 @@ const enhancer = composeEnhancers(applyMiddleware(...middleware))
 
 export default () => {
     let store = createStore(persistedReducer, enhancer)
-    let persistor = persistStore(store,{
-        transforms: [
-          saveSubsetBlacklistFilter  
-        ]
-      })
+    let persistor = persistStore(store)
 
     return { store, persistor }
 }

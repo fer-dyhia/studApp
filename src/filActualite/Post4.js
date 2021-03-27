@@ -11,6 +11,7 @@ export default function Post4() {
     const User = useSelector((state) => state.user)
     const dispatch = useDispatch()
     const follow = (destination) => {
+        console.log(destination)
         const req = {
             owner: User.credentials.username,
             destination: destination,

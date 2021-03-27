@@ -1,7 +1,8 @@
-import { SUGGEST_USERS, SEND_FOLLOW_REQUEST, SET_FOLLOW_REQUESTS, DECLINE_REQUEST, SET_FOLLOWER, ACCEPT_FOLLOW_REQUEST, SET_SELECTED_USER, LOAD_MESSAGES,
+import { SUGGEST_USERS, SEND_FOLLOW_REQUEST, SET_FOLLOW_REQUESTS, DECLINE_REQUEST,CLEAN_INFOS, SET_FOLLOWER, ACCEPT_FOLLOW_REQUEST, SET_SELECTED_USER, LOAD_MESSAGES,
     LOAD_SUCESS_MESSAGE,
     LOAD_CONVERSATIONS,
-    LOAD_CONVERSATIONS_SUCESS, } from '../types'
+    LOAD_CONVERSATIONS_SUCESS,
+    SET_NOTIFICATIONS, } from '../types'
 
 const initialState = {
     suggestedUsers: [],
@@ -86,6 +87,29 @@ export default function dataReducer(state = initialState, action) {
                   messages: action.payload,
                   loading: false,
                 };
+        case SET_NOTIFICATIONS:
+          if(action.payload.length>0){
+            console.log("yes")
+            if (state.notif.length>0){
+              console.log("yes")
+              state.notif=action.payload
+            }else{
+              console.log("yes2")
+              for(let i= 0;i<action.payload.length;i++){
+                state.notif.unshift(action.payload[i])
+              } 
+            }
+          }
+               return {
+                 ...state,
+            
+                    
+                  };
+        case CLEAN_INFOS:
+            return {
+                        ...initialState,
+                        notif:[]
+                    }
           
 
         default:

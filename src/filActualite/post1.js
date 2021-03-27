@@ -60,13 +60,13 @@ export default function Post1() {
                         <AffichInvit/>
                         </div>
                          <div>
-                            <AffichNotif  />
+                        <AffichNotif  />
                         </div>
                     </div>
                     <div className='flex flex-row pl-4 pb-4 justify-center items-center '>
 
                         <div>
-                            <ClickAway />
+                            <ClickAway/>
                         </div>
                         <div>
                             {User.loading == false ? <h3 className='w-0 md:w-full md:pt-3 md:text-xl text-yellow-400 invisible md:visible'>{User.credentials.username}</h3> : null}

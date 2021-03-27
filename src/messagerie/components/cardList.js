@@ -23,10 +23,11 @@ useEffect(() => {
 const searchConv=(username) => {
   const conv1 = [username, user.credentials.username].join(" ");
   const conv2 = [user.credentials.username, username].join(" ");
-//   console.log(conv1)
-//   console.log(conv2)
- 
-   let index= infos.conversations.findIndex((conv) => 
+  console.log(conv1)
+  console.log(conv2)
+  console.log(infos)
+  if(infos.conversations.lenghth>0){
+    let index= infos.conversations.findIndex((conv) => 
    
         conv.convId==conv1 |conv.convId==conv2
     )
@@ -42,6 +43,10 @@ const searchConv=(username) => {
         props.click({name:"",img:{}})
     }
 }
+
+  }
+ 
+   
 
 
     return(

@@ -1,8 +1,9 @@
-import { GET_POST, SUBMIT_POST, DELETE_POST, SUBMIT_COMMENT, CLEAN_POSTS, COMMENT_POST, UPLOADING_IMAGE_SUCESS,LIKE_POST, UPLOADING_IMAGE } from '../types'
+import { GET_POST, SUBMIT_POST, DELETE_POST, SUBMIT_COMMENT, CLEAN_POSTS, COMMENT_POST, LOGOUT_USER, UPLOADING_IMAGE_SUCESS,LIKE_POST, UPLOADING_IMAGE } from '../types'
 
 const initialState = {
+   
+    image: null ,
     posts: [],
-    image: '',
 }
 
 export default function postsReducer(state = initialState, action) {
@@ -15,18 +16,23 @@ export default function postsReducer(state = initialState, action) {
         case LIKE_POST:
 
             let inde = state.posts.findIndex((post) => post.postId === action.payload.postId)
-            console.log(inde)
+            console.log(state.posts[inde])
             state.posts[inde].likes.unshift(action.payload)
+            console.log(state.posts[inde])
             state.posts[inde].likeCount=state.posts[inde].likeCount+1
+            console.log(state.posts[inde].likeCount)
                 return{...state}
 
 
         case CLEAN_POSTS:
-            return { ...initialState }
+            return { ...initialState,
+            posts:[] }
 
         case GET_POST:
-            console.log(action.payload)
-            return { ...state, posts: action.payload }
+            if(action.payload!=""){
+                state.posts=action.payload
+            }
+            return { ...state }
 
         case DELETE_POST:
             console.log(action.payload)
@@ -62,6 +68,7 @@ export default function postsReducer(state = initialState, action) {
                 ...state,
                 loading: true,
             }
+       
 
         default:
             return state

@@ -5,6 +5,7 @@ export const SET_USER = 'SET_USER'
 export const LOADING_USER = 'LOADING_USER'
 export const NO_ONLINE_USERS = 'NO_ONLINE_USERS '
 export const SET_ONLINE_USERS = 'SET_ONLINE_USERS'
+export const SET_NOTIFICATIONS = 'SET_NOTIFICATIONS'
 
 // UI reducer types
 export const SET_ERRORS = 'SET_ERRORS'
@@ -55,3 +56,6 @@ export const SET_FAILURE_MESSAGES = "SET_FAILURE";
 
 //MESSAGES TYPES
 export const MESSAGE_UPDATE = "MESSAGE_UPDATE";
+export const CLEAN_INFOS = "CLEAN_INFOS";
+
+

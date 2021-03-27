@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-import { CLEAN_POSTS, LOGOUT_USER } from '../Redux/types'
+import { CLEAN_INFOS, CLEAN_POSTS, LOGOUT_USER } from '../Redux/types'
 import { Link, useHistory } from 'react-router-dom'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 const { fire } = require('../init')
@@ -25,9 +25,11 @@ export default function ClickAway(props) {
                 localStorage.clear()
                 dispatch({ type: LOGOUT_USER })
                 dispatch({ type: CLEAN_POSTS })
+                dispatch({type:CLEAN_INFOS})
                 history.push('./')
             })
     }
+    console.log(props)
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className='pt-4 pr-2'>
@@ -35,7 +37,7 @@ export default function ClickAway(props) {
                     <span className='sr-only'>Ouvrire le menu</span>
                     <img
                         className=' h-10 w-10  rounded-full '
-                        src={props.imageUrl}
+                        src={user.credentials.imageUrl}
                         alt=''
                     />
                 </button>

@@ -17,7 +17,12 @@ export default function Comments(props) {
             body,
             postId,
         }
-        commentOnPost(dispatch, comment)
+        if(body!=''){
+            commentOnPost(dispatch, comment)
+            setBody('')
+
+        }
+       
     }
 
     return (

@@ -72,12 +72,48 @@ export const LoginWithGoogle = () => {
 
 export const signUpUser = (userData, history, dispatch) => {
     dispatch({ type: LOADING_UI })
-    axios
-        .post('/users/signUp', userData)
-        .then((res) => {
-            dispatch({ type: CLEAR_ERRORS })
-            history.push('/signin')
-        })
+    
+      fire.firestore().collection("Users")
+          .doc(userData.username)
+          .get()
+          .then((user) => {
+            if (user.exists) {
+                
+              
+            } else {
+              return fire.auth()
+                  .createUserWithEmailAndPassword(userData.email, userData.password)
+                  .then((data) => {
+                    const userId = data.user.uid;
+                    // data.sendEmailVerification()
+                    // .auth().sendPasswordResetEmail(email)
+                    const newUser = {
+                      FirstName: userData.firstname,
+                      LastName: userData.lastname,
+                      creatAt: new Date().toISOString(),
+                      Email: userData.email,
+                      imageUrl: "https://firebasestorage.googleapis.com/v0/b/studup-dc5db.appspot.com/o/profile.png?alt=media&token=51a55cfd-bc1f-4a07-bc7d-cfc230334cd3",
+                      isonline: false,
+                      uid: userId,
+                      //displayName: userData.displayName,
+                      username: userData.username,
+                    };
+                    fire.firestore().collection("Users").doc(userData.username).set(newUser);
+                  }).then((res) => {
+                    dispatch({ type: CLEAR_ERRORS })
+                    history.push('/signin')
+                })
+                  .catch((e) => {
+                    console.error(e);
+                    
+                  });
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          })
+    
+        
         .catch((err) => {
             dispatch({
                 type: SET_ERRORS,
@@ -121,10 +157,11 @@ export const loginUser = (userData, history, dispatch) => {
                     getPosts(dispatch, user)
                     getOnlineUsers(dispatch, user)
                     getSuggestedUsers(dispatch, user)
+                    history.push('./filActualite')
                 })
                 .catch((err) => console.log(err))
 
-            history.push('./filActualite')
+            
         })
         .catch((e) => {
             console.error(e)

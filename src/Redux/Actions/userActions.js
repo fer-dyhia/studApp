@@ -6,6 +6,7 @@ import {
     NO_ONLINE_USERS,
     SET_FOLLOWER,
     UNFOLLOW_USER,
+    SET_NOTIFICATIONS,
     SET_FOLLOW_REQUESTS,
     SET_FOLLOWERS,
 } from '../types'
@@ -84,4 +85,14 @@ export const getFollowers = (dispatch, user) => {
     })
 }
 
+export const getNotifications=(dispatch,user) => {
+    console.log(user)
+    fire.firestore().collection("notifications").where("recipient","==",user.username).orderBy("createdAt","desc").onSnapshot((snapshot) => {
+        let notifications=[]
+        snapshot.forEach((notif) => {
+            notifications.push(notif.data())
+        })
+        dispatch({type:SET_NOTIFICATIONS,payload:notifications})
+    })
+}
 
