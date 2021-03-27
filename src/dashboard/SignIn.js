@@ -90,16 +90,16 @@ export default function Signin({ loginForm }) {
                             {errors.password && <p className='text-red-500'>{errors.password}</p>}
                         </div>
 
-                        <div className='flex justify-start items-start p-2 text-blue-500 font-sans text-lg hover:underline hover:text-blue-500'>
+                        <div className='focus:outline-none flex justify-start items-start p-2 text-blue-500 font-sans text-lg hover:underline hover:text-blue-500'>
                             <Link to={'/forgotPass'}>Mot de passe oublié?</Link>
                         </div>
-                        <div className='flex items-start justify-start'>
+                        <div className='focus:outline-none flex items-start justify-start'>
                             <button onClick={onSubmit} className='p-2 w-40 focus:outline-none bg-blue-500 hover:bg-yellow-500 text-gray-100  hover:text-white font-bold  rounded-lg' type='submit'>
                                 Se connecter
                             </button>
                         </div>
 
-                        <div className='p-4 flex items-center justify-center'>
+                        <div className='p-4 flex items-center justify-center focus:outline-none'>
                          <p>Vous n'avez pas de compte?  
                          <Link to={'/signup'} className='text-blue-500 font-sans text-xl hover:underline hover:text-blue-600'>  créer un compte</Link>
                          </p>

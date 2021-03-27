@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { submitPost } from '../Redux/Actions/postAction'
 import { FaSearch } from 'react-icons/fa'
-import { FaPhotoVideo } from 'react-icons/fa'
+import { BsCamera } from 'react-icons/bs'
 import { AiFillEdit } from 'react-icons/ai'
-import { HiOutlineEmojiHappy } from 'react-icons/hi'
-import { FiLink } from 'react-icons/fi'
+import { BiCool } from 'react-icons/bi'
+import { BiFile } from 'react-icons/bi'
 import Thread from './Thread'
 import { UploadImagePost, getSuggestedUsers } from '../Redux/Actions/dataAction'
 import { Divider } from '@material-ui/core'
@@ -57,42 +57,26 @@ export default function Post3() {
                </div>
             <div className=' flex justify-center focus:outline-none  '> {data.image != '' ? <img src={data.image} width='200PX' height='200px' /> : null}</div>
 
-            <div className='grid grid-col-2'>
-                <div className='grid grid-col-3 md:grid-cols-4'>
-                    <div className='col-span-2 '>
-                    <FiLink className='text-gray-600 h-5 w-5'>
-                    <input onChange={onUpload} type='file' className=' hidden '/></FiLink>
-                    <span className=' '> Fechier</span>
-                    </div>
-                    <div>
-                        <button className=' focus:outline-none '>
-                            <FaPhotoVideo className='text-pink-800 h-8 w-8'><input onChange={onUpload} type='file' className=' hidden '/></FaPhotoVideo>
-                            <span className=' '> Photo</span>
-                        </button>
-                    </div>
-                    <div>
-                    <button className=''>
-                        <HiOutlineEmojiHappy className='text-yellow-500 h-8 w-8 '></HiOutlineEmojiHappy>
-                        <span>Emoji</span>
-                    </button>
-                    </div>
-                    {/* <div>
-                     <button className=''>
-                        <FiLink className='text-gray-600 h-5 w-5'></FiLink>
-                        <span>Lien</span>
-                    </button> 
-                    </div> 
-                     <div className=''>
-                        <button className=''>
-                            <FaSearch></FaSearch>
-                        </button>
-                    </div> */}
-                    </div>
+            <div className='grid grid-cols-4 focus:outline-none'>
+                <div className='col-span-3 grid grid-cols-3 ml-3 '>
+                        <label>
+                        <BiFile className='text-gray-900  h-8 w-8 cursor-pointer transform hover:-translate-y-1 hover:scale-110'/>
+                        <input onChange={onUpload} type='file' className=' hidden '/>
+                        </label>
+                        <label>
+                            <BsCamera className='text-gray-900 h-8 w-8 cursor-pointer transform hover:-translate-y-1 hover:scale-110'/>
+                            <input onChange={onUpload} type='file'accept="image/png, image/jpeg"  className='hidden '/>
+                        </label>
+                        <label>
+                        <BiCool className='text-yellow-500 h-8 w-8 cursor-pointer transform hover:-translate-y-1 hover:scale-110'/>
+                         </label>
+
+                 </div>
                     <div className=' flex flex-col items-center border-t-2 focus:outline-none'>
                     <button
                         onClick={onCreatePost}
-                        className='  text-blue-900 hover:text-gray-900 font-bold px-4 focus:outline-none inline-flex  rounded-full'>
-                        <AiFillEdit className=' text-white ' size={30} ></AiFillEdit>
+                        className='  text-blue-900 hover:text-gray-900 font-bold px-4 focus:outline-none inline-flex  rounded-full transform hover:-translate-y-1 hover:scale-110'>
+                        <AiFillEdit className=' text-blue-700 ' size={30} />
                         <span className=' text-xl ' > Publier </span>
                     </button>
                     </div>

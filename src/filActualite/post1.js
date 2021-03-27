@@ -42,17 +42,17 @@ export default function Post1() {
                     <div className=' flex flex-row space-x-3 justify-center items-center text-gray-100   '>
                         <div className= 'visible md:invisible '>
                             <Link to='/pages'>
-                                <MdPages className=' text-gray-100 h-6 w-6 transform hover:-translate-y-1 hover:scale-110' />
+                                <MdPages className=' text-gray-100 h-6 w-6 transform hover:-translate-y-1 hover:scale-110 focus:outline-none' />
                             </Link>
                         </div>
                         <div>
                             <Link to='/club' className= 'visible md:invisible '>
-                                <FaUsers className=' text-gray-100 h-6 w-6 transform hover:-translate-y-1 hover:scale-110'  />
+                                <FaUsers className=' text-gray-100 h-6 w-6 transform hover:-translate-y-1 hover:scale-110 focus:outline-none'  />
                             </Link>
                         </div>
                         <div>
                             <Link to='/messagerie'>
-                                <AiFillMessage className=' text-gray-100 h-6 w-6 md:h-10 md:w-10 transform hover:-translate-y-1 hover:scale-110'  />
+                                <AiFillMessage className=' text-gray-100 h-6 w-6 md:h-10 md:w-10 transform hover:-translate-y-1 hover:scale-110 focus:outline-none'  />
                             </Link>
                         </div>
 

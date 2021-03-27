@@ -48,7 +48,7 @@ export default function AffichNotif(props) {
                 <button type='button' onClick={handleClick} className=' '>
                 <span className='bg-red-500 origin-top-right absolute right-35 z-40 rounded-full text-sm md:text-base h-4 md:h-5 w-4 md:w-5 flex items-center justify-center '> 0 </span>
                     <a className=' '>
-                        <MdNotifications className='text-3xl text-gray-100 h-6 w-6 md:h-10 md:w-10 transform hover:-translate-y-1 hover:scale-110'  />
+                        <MdNotifications className='text-3xl text-gray-100 h-6 w-6 md:h-10 md:w-10 transform hover:-translate-y-1 hover:scale-110 focus:outline-none'  />
                     </a>
                    
                 </button>
