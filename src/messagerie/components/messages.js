@@ -8,34 +8,60 @@ import f3 from "../../img/friend3.jpg";
 import f4 from "../../img/friend4.jpg";
 import f5 from "../../img/friend5.jpg";
 import BNewmsg from "../buttons/bnewmsg";
+import Newmsg from "./newmsg";
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+Modal.setAppElement("#root")
+
+
+const dayjs = require('dayjs')
+var relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
 
 const Messages = (props) => {
-  const userData=useSelector((state) => state.user
-    
-  )
+  const userData=useSelector((state) => state.user)
+  const [modalIsOpen,setIsOpen] = React.useState(false);
+
+const closeModal=()=>{
+    setIsOpen(false);
+  }
+const openModal=()=>{
+    setIsOpen(true);
+  }
   const users = props.users;
   console.log(users)
   return (
-    <div className="">
+    <div className="no-scrollbar">
       <div className="mt-10 mb-10 flex flex-row">
-        <p className="flex text-gray-400 justify-start w-4/5 sm:visible invisible">
+        <p className="flex text-gray-400 justify-start font-semibold w-4/5 sm:visible invisible">
           Conversations
         </p>
-        <div className="flex justify-around sm:w-1/5 -ml-20 sm:-ml-2 md:-ml-1">
-          <BNewmsg />
-        </div>
+         <div className="flex justify-around sm:w-1/5 -ml-20 sm:-ml-2 md:-ml-1">
+          <BNewmsg open={openModal} />
+          <Modal isOpen={modalIsOpen}
+          
+          
+            onRequestClose={closeModal}
+            close={closeModal}>
+      
+             <Newmsg/>
+      
+            </Modal>
+          
+        </div> 
       </div>
       <div className="overflow-y-scroll h-screen scrollbar">
         {users.map((user) => {
           const index = user.Users.findIndex((User) => User == userData.credentials.username);
           let Username = user.Users[1 - index];
-          console.log(Username);
+          console.log(user);
           return (
             <Message
               username={Username}
               convId={user.convId}
+              imageUrl={user.imageUrl}
               key={user.convId}
-              time="23:19"
+              time={dayjs(user.LastUpdate).fromNow(true)}
               content={user.LastMsg.body}
               img={rcv}
               get_user={(name, img) => props.parentGetUser(name, img)}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOnlineUsers} from "../../Redux/Actions/userActions";
+import {
+    getOnlineUsers
+} from "../../Redux/Actions/userActions";
 import Bonline from "../buttons/bonline";
 
 const CardList=(props) => {
@@ -23,36 +25,39 @@ useEffect(() => {
 const searchConv=(username) => {
   const conv1 = [username, user.credentials.username].join(" ");
   const conv2 = [user.credentials.username, username].join(" ");
-  console.log(conv1)
-  console.log(conv2)
-  console.log(infos)
-  if(infos.conversations.lenghth>0){
-    let index= infos.conversations.findIndex((conv) => 
+//   console.log(conv1)
+//   console.log(conv2)
+ if (infos.conversations.length >0){
+  let index= infos.conversations.findIndex((conv) => 
    
-        conv.convId==conv1 |conv.convId==conv2
-    )
-    if(index!=-1){
-        let convInfo={
-            convName:infos.conversations[index].convId,
-            username:username,
-
-        }
-        props.setConv(convInfo)
-    }else{
-        console.log(infos.conversations[index].convId)
-        props.click({name:"",img:{}})
-    }
-}
+  conv.convId==conv1 |conv.convId==conv2
+)
+if(index!=-1){
+  let convInfo={
+      convName:infos.conversations[index].convId,
+      username:username,
 
   }
- 
+  props.setConv(convInfo)
+}else{
+  props.click({name:"",img:{}})
+}
+}
+
+}
    
 
 
     return(
+      
         <div class="container flex mx-auto w-full items-center justify-center">
+          <div>
+          
+          </div>
    <ul class="flex flex-col mt-7 bg-white-300 p-4">
+   <h2 className="flex-row mb-10 font-semibold hover:text-gray-500 transition duration-500 ease-in-out">Amis en Ligne</h2> 
 { typeof(user.OnlineUsers)!="undefined" ? user.OnlineUsers.length>0 ?user.OnlineUsers.map((online) => {
+  
     return(
         <li class="border-gray-400 flex flex-row mb-2" onClick={()=>searchConv(online.username)}>
           <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
@@ -60,7 +65,10 @@ const searchConv=(username) => {
             <div class="flex-1 pl-1 mr-16">
               <div class="font-medium flex-col justify-evenly "> {online.username}
               </div>
+              
+              
             </div>
+            
             <div class="text-gray-600 text-xs"><Bonline/></div>
           </div>
         </li>
@@ -68,8 +76,12 @@ const searchConv=(username) => {
 }):null
 
 :null}
-    </ul>
+        
 
+        
+
+    </ul>
+    
   </div>
     )
 

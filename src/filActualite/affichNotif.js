@@ -25,7 +25,7 @@ export default function AffichNotif(props) {
     console.log(infos.notif)
     for(let i=0;i<infos.notif.length;i++){
        console.log(infos.notif[i].read==false) 
-        if(infos.notif[i].read==false){
+        if(infos.notif[i].read==false && infos.notif[i].type != "follow"){
             notifNumber++
         }
     }
@@ -36,7 +36,7 @@ export default function AffichNotif(props) {
         <ClickAwayListener onClickAway={handleClickAway}>
             <div>
                 <button type='button' onClick={handleClick} className=' '>
-                    {infos.notif.length>0?<span className='bg-red-500 origin-top-right absolute right-35 z-40 rounded-full text-sm md:text-base h-4 md:h-5 w-4 md:w-5 flex items-center justify-center '>
+                    {notifNumber>0?<span className='bg-red-500 origin-top-right absolute right-35 z-40 rounded-full text-sm md:text-base h-4 md:h-5 w-4 md:w-5 flex items-center justify-center '>
                     {notifNumber}
                  </span>:null}
                 
@@ -66,7 +66,7 @@ export default function AffichNotif(props) {
                                     </div> 
                                     <div className=' col-span-3 w-auto h-10' > 
 
-                                        <h2 className='pt-1 pl-4 text-sm text-gray-900'>{notif.type=="comment"?<span>A commenté une de vos publications</span>:<span>A Aimé une de vos publications</span>} </h2>
+                                        <h2 className='pt-1 pl-4 text-sm text-gray-900'>{notif.type=="comment"?<span>A commenté une de vos publications</span>:notif.type!="follow"?<span>A Aimé une de vos publications</span>:null} </h2>
 
                                     </div>
                                     <div className=' col-span-1' >

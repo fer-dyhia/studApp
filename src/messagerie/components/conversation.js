@@ -18,6 +18,7 @@ const Conversation = (props) => {
   const [infos, setInfos] = useState([]);
   const dispatch = useDispatch();
   const info = useSelector((state) => state.infos);
+  const user = useSelector((state) => state.user);
 
   return props.cnvslctd == "yes" ? (
     <div className="flex w-5/6 shadow-lg">
@@ -65,15 +66,14 @@ const Conversation = (props) => {
           {info.messages.length<0
             ? null
             : info.messages.map((msg) => {
-                return msg.sourceName === "mohand" ? (
-                  <Msgcontent
-                    sent="yes"
-                    seen={msg.seen ? "seen" : null}
-                    body={msg.body}
-                  />
-                ) : (
-                  <Msgcontent sent="no" body={msg.body} />
-                );
+                return(<Msgcontent
+                  sent={msg.sourceName==user.credentials.username?"yes":"no"}
+                  seen={msg.seen? "seen" : null}
+                  body={msg.body}
+                  imageUrl={msg.imageUrl}
+                />)  
+                  
+          
               })}
         </div>
 

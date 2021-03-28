@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { MdRvHookup } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { MessageUser } from "../../Redux/Actions/dataAction";
 import { ReadMsg } from "../../Redux/Actions/dataAction";
 
 const Send = (props) => {
   const [Message, setMessage] = useState();
   const dispatch = useDispatch();
+  const user=useSelector((state)=>state.user)
+  console.log(user.credentials.username)
 
   const send = () => {
     const message = {
-      sourceName: "mohand",
+      sourceName: user.credentials.username,
       body: Message,
       imageUrl: "",
       convId: props.convId,
