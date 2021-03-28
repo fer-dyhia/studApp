@@ -12,6 +12,20 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
       }
+      .scrollbar{
+        scrollbar-color: #D2D2D2 transparent;
+        scrollbar-width: thin;
+        &::-webkit-scrollbar{
+          :window-inactive:5px;
+        }
+        &::-webkit-scrollbar-track{
+          background:#D2D2D2;
+        }
+        &::-webkit-scrollbar-thumb{
+          background-color:#D2D2D2;
+          border-radius:5px;
+        }
+      }
     .ReactModal__Overlay {
         opacity: 0;
         transition: opacity 200ms ease-in-out;

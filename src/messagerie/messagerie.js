@@ -5,7 +5,7 @@ import RightBar from "./screen/rightbar";
 import Navbar from "./screen/navbar";
 import Sidebar from "./screen/sidebar";
 import CardList from "./components/cardList";
-import listAddNewConv from "./components/modal"
+import listAddNewConv from "./components/modal";
 
 import msgg from "../img/logo.png";
 
@@ -25,8 +25,6 @@ import {
 } from "../Redux/Actions/dataAction";
 import Conversation from "./components/conversation";
 
-
-
 const Messagerie = (props) => {
   const [infos, setInfos] = useState({ name: "", img: {} });
   const [username, setUser] = useState("");
@@ -37,11 +35,11 @@ const Messagerie = (props) => {
   const name = infos.name;
   const [unsub, setUnsub] = useState();
   const [prec, setPrec] = useState(infos.name);
- 
+
   console.log(infos);
 
   useEffect(() => {
-    getConversations(dispatch,userData.credentials.username );
+    getConversations(dispatch, userData.credentials.username);
   }, []);
 
   const get_user = (name, username, img) => {
@@ -55,9 +53,9 @@ const Messagerie = (props) => {
       img: img_user,
     });
   };
-  const click=(info) => {
-    setInfos(info)
-  }
+  const click = (info) => {
+    setInfos(info);
+  };
   const Click = (user) => {
     // if (prec != infos.name) {
 
@@ -77,11 +75,11 @@ const Messagerie = (props) => {
     //  }
   };
 
-  const setConv=(info) => {
-    console.log(info)
-    setInfos({name:info.convName,img:{}})
-    setUser(info.username)
-    console.log(infos.name)
+  const setConv = (info) => {
+    console.log(info);
+    setInfos({ name: info.convName, img: {} });
+    setUser(info.username);
+    console.log(infos.name);
     if (typeof unsub != "undefined") {
       unsub.unsubscribe();
       let unsubscribe = getRealtimeMessages(dispatch, info.convName);
@@ -90,51 +88,42 @@ const Messagerie = (props) => {
       let unsubscribe = getRealtimeMessages(dispatch, info.convName);
       setUnsub({
         unsubscribe,
-      }); 
+      });
     }
     //  }
   };
 
-   
-  
- 
-
   return (
-    <div className="flex h-screen w-screen antialiased text-gray-800">
+    <div className="flex antialiased text-gray-800">
       <Navbar imageUrl={userData.credentials.imageUrl} click={setlist} />
-      <div className="flex flex-row h-full w-full overflow-hidden">
-        <div className="p-2 w-2/6 bg-gray-50">
+      <div className="flex flex-row h-screen w-full overflow-hidden">
+        <div className="p-2 w-3/12 bg-gray-50">
           <SearchP />
-          
-          
-{friendList ?<CardList setConv={setConv} click={click}/>:
-  <Messages
-            parentGetUser={get_user}
-            users={info.conversations}
-            Click={Click}
-          />
-         
 
-}
-          
+          {friendList ? (
+            <CardList setConv={setConv} click={click} />
+          ) : (
+            <Messages
+              parentGetUser={get_user}
+              users={info.conversations}
+              Click={Click}
+            />
+          )}
         </div>
-        {name === "" ? (  <ConvNull /> ) : (
-          <div>
-            
+        {name === "" ? (
+          <ConvNull />
+        ) : (
+          <div className="w-4/6">
             <Conversation
-            // grp="yes"
-            cnvslctd="yes"
-            convId={infos.name}
-            username={username}
-            img={infos.img}
-          />
-          
+              // grp="yes"
+              cnvslctd="yes"
+              convId={infos.name}
+              username={username}
+              img={infos.img}
+            />
           </div>
-          
         )}
-          <RightBar name={username} img={infos.img} />
-          
-        
+        <RightBar name={username} img={infos.img} />
       </div>
     </div>
   );

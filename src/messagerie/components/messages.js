@@ -50,7 +50,7 @@ const openModal=()=>{
           
         </div> 
       </div>
-      <div className="overflow-y-scroll h-screen scrollbar">
+      <div className="overflow-y-scroll h-screen no-scrollbar">
         {users.map((user) => {
           const index = user.Users.findIndex((User) => User == userData.credentials.username);
           let Username = user.Users[1 - index];

@@ -4,7 +4,7 @@ import Upload from "../components/upload";
 import Disponible from "../components/disponible";
 const Rightbar = (props) => {
   return (
-    <div className="flex flex-col py-6 w-1/5 flex-shrink-0 bg-gray-50">
+    <div className="flex flex-col py-6 w-1/5 h-screen flex-shrink-0 bg-gray-50">
       <div className="flex flex-row justify-center h-12 w-full sm:visible invisible">
         <div className="font-bold text-2xl font-sans">Shared files</div>
       </div>
@@ -19,8 +19,8 @@ const Rightbar = (props) => {
           {props.name}
         </div>
       </div>
-      <div className="p-6"></div>
-      <Upload />
+      <div className=""><Upload /></div>
+      
     </div>
   );
 };

@@ -21,7 +21,7 @@ const Conversation = (props) => {
   const user = useSelector((state) => state.user);
 
   return props.cnvslctd == "yes" ? (
-    <div className="flex w-5/6 shadow-lg">
+    <div className="flex w-full shadow-lg">
       <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen">
         <div className="flex sm:items-center justify-between mt-3 ml-4 sm:ml-0 sm:mt-0">
           <div className="flex items-center space-x-4">
@@ -62,7 +62,7 @@ const Conversation = (props) => {
             </div> */}
           </div>
         </div>
-        <div className="flex flex-col space-y-4 p-3 overflow-y-scroll scrollbar">
+        <div className="flex flex-col w-full space-y-4 p-3 overflow-y-scroll no-scrollbar">
           {info.messages.length<0
             ? null
             : info.messages.map((msg) => {
@@ -73,7 +73,6 @@ const Conversation = (props) => {
                   imageUrl={msg.imageUrl}
                 />)  
                   
-          
               })}
         </div>
 

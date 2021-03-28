@@ -13,44 +13,44 @@ import Uplolink from "./uplolink";
 
 const Upload = () => {
   return (
-    <div className="font-sans h-screen overflow-y-scroll scrollbar p-1">
+    <div className="font-sans h-screen overflow-y-scroll no-scrollbar p-1">
       <div className="flex flex-col flex-wrap w-full sm:flex-col sm:justify-around">
         <Uplocomp
           funct="Images"
           icone={<RiArrowRightSLine />}
           iconemd={<BsImages />}
         />
-        <div className="flex flex-wrap flex-row">
+        {/* <div className="flex flex-wrap">
           <Uploimg />
           <Uploimg />
           <Uploimg />
           <Uploimg />
           <Uploimg />
-        </div>
+        </div> */}
         <Uplocomp
           funct="Fichiers"
           icone={<RiArrowRightSLine />}
           iconemd={<BsFiles />}
         />
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <Uplofile />
           <Uplofile />
           <Uplofile />
           <Uplofile />
           <Uplofile />
-        </div>
+        </div> */}
         <Uplocomp
           funct="Liens"
           icone={<RiArrowRightSLine />}
           iconemd={<RiLinksFill />}
         />
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <Uplolink />
           <Uplolink />
           <Uplolink />
           <Uplolink />
           <Uplolink />
-        </div>
+        </div> */}
         <Uplocomp
           funct="Recherche"
           icone={<BiSearchAlt />}

@@ -4,7 +4,7 @@ import image from "../../img/spongebob.png";
 const Uploimg = () => {
   return (
     <div classname="">
-      <img src={image} className="w-20 h-20" />
+      <img src={image} className="w-16 h-16" />
     </div>
   );
 };

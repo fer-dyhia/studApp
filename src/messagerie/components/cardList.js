@@ -61,7 +61,7 @@ if(index!=-1){
     return(
         <li class="border-gray-400 flex flex-row mb-2" onClick={()=>searchConv(online.username)}>
           <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-            <div class="flex flex-col rounded-full w-10 h-10 bg-gray-200 justify-center items-center mr-4"><img src={online.imageUrl} alt=""/></div>
+            <div class="flex flex-col rounded-full w-10 h-10 bg-gray-200 justify-center items-center mr-4"><img className="rounded-full h-10 w-10" src={online.imageUrl} alt=""/></div>
             <div class="flex-1 pl-1 mr-16">
               <div class="font-medium flex-col justify-evenly "> {online.username}
               </div>
