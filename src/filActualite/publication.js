@@ -5,7 +5,7 @@ import { AiFillHeart } from 'react-icons/ai'
 import { AiOutlineHeart } from "react-icons/ai"
 import Comments from './comments'
 import moment from 'moment'
-import { getCommentOnPost, suppPost, likePost, LikeOnPost } from '../Redux/Actions/postAction'
+import { getCommentOnPost, suppPost, likePost, LikeOnPost,UnlikeOnPost } from '../Redux/Actions/postAction'
 import { getSuggestedUsers } from '../Redux/Actions/dataAction'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -20,11 +20,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { green, red, blueGrey, deepOrange,grey } from '@material-ui/core/colors';
 import DeleteIcon from '@material-ui/icons/Delete';
-import FaceSharpIcon from '@material-ui/icons/FaceSharp';
-import { borders } from '@material-ui/system';
-import { FaBlackberry } from 'react-icons/fa';
+import dayjs from 'dayjs'
+var relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
 
-moment().format()
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -86,6 +85,14 @@ export default function Publication(props) {
 
         LikeOnPost(dispatch, newlike)
     }
+    const UnlikePost = () => {
+      let like = {
+          postId: props.post.postId,
+          username: user.credentials.username,
+      }
+
+      UnlikeOnPost(dispatch, like)
+  }
 
     return (
         <div   >
@@ -93,12 +100,12 @@ export default function Publication(props) {
        {
          <CardHeader
          avatar={
-           <Avatar aria-label="recipe" className={classes.avatar}>
-            < FaceSharpIcon />
+           <Avatar aria-label="recipe" >
+            <img src={props.post.userImage} alt=""/>
            </Avatar>
          }
          title={props.post.username}
-         subheader={moment(props.post.createdAt).startOf('second').fromNow()}
+         subheader={ dayjs(props.post.createdAt).fromNow(true)+ "  ago" }
          action={props.post.username==user.credentials.username ?
            <IconButton aria-label="supprimer" onClick={suppPostUser} className={classes.supp}>
              <DeleteIcon />
@@ -144,7 +151,7 @@ export default function Publication(props) {
         </IconButton>
         
         <IconButton aria-label="dislike "
-        className={classes.dislike} >
+        className={classes.dislike} onClick={() => {UnlikePost() }} >
           < AiOutlineHeart  />
         </IconButton>
       </CardActions>

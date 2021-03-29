@@ -50,11 +50,12 @@ const openModal=()=>{
           
         </div> 
       </div>
-      <div className="overflow-y-scroll h-screen no-scrollbar">
+      <div className="overflow-y-scroll h-screen scrollbar">
         {users.map((user) => {
           const index = user.Users.findIndex((User) => User == userData.credentials.username);
           let Username = user.Users[1 - index];
-          console.log(user);
+          let Image=user.Images[1-index]
+          console.log(Image);
           return (
             <Message
               username={Username}
@@ -63,7 +64,7 @@ const openModal=()=>{
               key={user.convId}
               time={dayjs(user.LastUpdate).fromNow(true)}
               content={user.LastMsg.body}
-              img={rcv}
+              img={Image}
               get_user={(name, img) => props.parentGetUser(name, img)}
               ClickOn={(name) => props.Click(name)}
             />

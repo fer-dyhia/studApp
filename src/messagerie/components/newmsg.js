@@ -9,9 +9,11 @@ import image4 from "../../img/receiver.jpg";
 import image5 from "../../img/receiver.jpg";
 import image6 from "../../img/receiver.jpg";
 import image7 from "../../img/receiver.jpg";
-import { BiMessageAltDetail } from "react-icons/bi";
+import { MdSend } from "react-icons/md";
 import {SendMessage} from "../../Redux/Actions/dataAction"
 import { PinDropSharp } from "@material-ui/icons";
+import { BiExit } from "react-icons/bi"
+
 
 const Newmsg = (props) => {
   const [username,setUser]=useState("")
@@ -32,7 +34,8 @@ const Newmsg = (props) => {
         accountName2:username,
         imageUrl1:user.credentials.imageUrl,
         imageUrl2:userImage,
-        message:Body
+        message:Body,
+        imageUrl:""
       }
       SendMessage(dispatch,conv)
       
@@ -45,16 +48,16 @@ const Newmsg = (props) => {
   console.log(infos.suggestedUsers.length>0)
 
   return (
-    <div className="flex flex-col h-96 w-full">
-      <div className="rounded-lg shadow-md -mt-8 p-2">
-        
-        <input onChange={(e) =>setBody(e.target.value)} className="w-full p-4 focus:outline-none" />
-        <button onClick={HandleMessage} className="w-8 h-8 items-center bg-opacity-75 rounded-full focus:outline-none focus:shadow-outline inline-flex shadow bg-blue-500 hover:bg-blue-600 text-gray-200 font-bold justify-center right-0">
-          <BiMessageAltDetail className="text-xl" />
+    <div className="flex flex-col h-full w-full">
+      <div className="flex flex-row mt-4 rounded-full border-t border-1 shadow-md p-2">
+        <button className="absolute right-1 top-1 text-3xl text-blue-400"><BiExit/></button>
+        <input onChange={(e) =>setBody(e.target.value)} placeholder="Nouveau message ..."className="placeholder-gray-400 w-full p-2 focus:outline-none" />
+        <button onClick={HandleMessage} className="h-10 w-12 transition duration-500 ease-in-out text-lg text-blue-400 bg-transparent hover:bg-blue-300 hover:text-white focus:outline-none items-center rounded-full inline-flex font-bold justify-center right-0 mr-2 mt-1">
+          <MdSend className="text-lg" />
         </button>
       </div>
       <p className="mb-6 mt-6 ml-4 font-semibold">Suggestions : </p>
-      <div className="overflow-y-scroll no-scrollbar h-96">
+      <div className="overflow-y-scroll scrollbar h-full">
         {infos.suggestedUsers.length>0?infos.suggestedUsers.map((user) => {
        
           return <Personcomp focus={selectUser} name={user.username} pseudo= {user.displayName} img={user.imageUrl} />

@@ -5,16 +5,30 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import { MdNotifications } from 'react-icons/md'
 import { IoChatboxEllipses} from 'react-icons/io5'
 import { AiFillHeart } from 'react-icons/ai'
+import {markNotificationsRead} from '../Redux/Actions/userActions'
 import moment from 'moment'
 moment().format()
 
 export default function AffichNotif(props) {
     const [open, setOpen] = React.useState(false)
+    const user =useSelector((state)=>state.user)
     const infos =useSelector((state)=>state.infos)
+    const dispatch =useDispatch()
     
 
     const handleClick = () => {
         setOpen((prev) => !prev)
+        if(open){
+            let info={
+                username:user.credentials.username,
+                type:"comment"
+
+            }
+            markNotificationsRead(dispatch,info)
+            info={...info,type:"like"}
+            markNotificationsRead(dispatch,info)
+
+        }
     }
 
     const handleClickAway = () => {

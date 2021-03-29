@@ -9,8 +9,10 @@ import {
     SET_NOTIFICATIONS,
     SET_FOLLOW_REQUESTS,
     SET_FOLLOWERS,
+    MARK_NOTIFICATIONS_READ
 } from '../types'
 import axios from 'axios'
+import { InfoOutlined } from '@material-ui/icons'
 const { fire } = require('../../init')
 
 export const sendRequest = (dispatch, req) => {
@@ -95,4 +97,14 @@ export const getNotifications=(dispatch,user) => {
         dispatch({type:SET_NOTIFICATIONS,payload:notifications})
     })
 }
+export const markNotificationsRead = (dispatch,info)=>{
+    axios
+      .post('/notifications',info)
+      .then(() => {
+        dispatch({
+          type: MARK_NOTIFICATIONS_READ
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 

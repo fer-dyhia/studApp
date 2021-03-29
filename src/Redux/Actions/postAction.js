@@ -1,4 +1,4 @@
-import { GET_POST, SUBMIT_POST, DELETE_POST, SUBMIT_COMMENT, COMMENT_POST, LIKE_POST } from '../types'
+import { GET_POST, SUBMIT_POST, DELETE_POST, SUBMIT_COMMENT, COMMENT_POST, LIKE_POST,UNLIKE_POST } from '../types'
 import axios from 'axios'
 
 export const getPosts = (dispatch, user) => {
@@ -66,6 +66,24 @@ export const LikeOnPost = (dispatch, like) => {
             dispatch({ type: LIKE_POST, payload: res.data })
         })
         .catch((err) => console.log(err))}
+
+export const UnlikeOnPost = (dispatch, like) => {
+        let unLike = {
+             username: like.username,
+             postId:like.postId
+        }
+        
+         axios
+            .post(`/UnlikePostUser`, unLike)
+            .then((res) => {
+                let unlike={
+                    postId:unLike.postId,
+                    likeId:res.data
+                }
+                 dispatch({ type: UNLIKE_POST, payload: unlike })
+             })
+             .catch((err) => console.log(err))}
+        
 
 export const getCommentOnPost = (dispatch, post) => {
     let id = { postId: post }

@@ -2,6 +2,7 @@ import React from 'react'
 import { BiDotsVerticalRounded } from 'react-icons/bi'
 
 const Friend = (props) => {
+    console.log(props)
     return (
         <div class='flex justify-between items-center h-16 p-4 my-6  rounded-lg border border-gray-100 shadow'>
             <button class='flex items-center'>

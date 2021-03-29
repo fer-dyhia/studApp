@@ -3,13 +3,18 @@ const Message = (props) => {
   const name = props.convId;
   const img = props.img;
   const username = props.username;
-  console.log(props.imageUrl);
+  //console.log(props.img);
 
   return (
     <div className="flex flex-col sm:shadow-md shadow-none font-medium px-2 py-2 mb-2 transition duration-700 ease-in-out text-gray-700 hover:text-gray-600 rounded bg-transparent sm:bg-white hover:bg-gray-200 focus:outline-none">
       <button
         onClick={() => {
-          props.get_user(name, username, img);
+          let infos={
+            username:name,
+            name:name,
+            img:props.img
+          }
+          props.get_user(infos);
           props.ClickOn(name);
         }}
       >
@@ -17,7 +22,7 @@ const Message = (props) => {
           <img
             alt="profile pic"
             className="rounded-full sm:mx-16 md:mx-0 h-20 w-20 md:h-10 md:w-10 sm:h-14 sm:w-14 ml-2"
-            src={props.imageUrl}
+            src={props.img}
           />
           <div className="font-semibold text-base invisible md:visible sm:invisible">
             {props.username}

@@ -12,7 +12,7 @@ const Header = (props) => {
 
             <Ident name={props.name} domain='Computer Science Student' img={props.img} />
 
-            <Funct />
+            <Funct username={props.name} />
         </div>
     )
 }

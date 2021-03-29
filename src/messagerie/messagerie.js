@@ -26,7 +26,7 @@ import {
 import Conversation from "./components/conversation";
 
 const Messagerie = (props) => {
-  const [infos, setInfos] = useState({ name: "", img: {} });
+  const [infos, setInfos] = useState({ name: "", img: "" });
   const [username, setUser] = useState("");
   const [friendList, setlist] = useState(false);
   const dispatch = useDispatch();
@@ -36,15 +36,16 @@ const Messagerie = (props) => {
   const [unsub, setUnsub] = useState();
   const [prec, setPrec] = useState(infos.name);
 
-  console.log(infos);
+  //console.log(infos.img);
 
   useEffect(() => {
     getConversations(dispatch, userData.credentials.username);
   }, []);
 
-  const get_user = (name, username, img) => {
-    const name_user = name;
-    const img_user = img;
+  const get_user = (info) => {
+    const name_user = info.name;
+    const img_user = info.img;
+    console.log(info.img)
     setUser(username);
     setPrec(infos.name);
 
@@ -94,10 +95,10 @@ const Messagerie = (props) => {
   };
 
   return (
-    <div className="flex antialiased text-gray-800">
+    <div className="flex antialiased h-screen overscroll-none text-gray-800">
       <Navbar imageUrl={userData.credentials.imageUrl} click={setlist} />
-      <div className="flex flex-row h-screen w-full overflow-hidden">
-        <div className="p-2 w-3/12 bg-gray-50">
+      <div className="flex flex-row h-full w-full overflow-hidden">
+        <div className="p-2 h-full w-3/12 bg-gray-50">
           <SearchP />
 
           {friendList ? (
@@ -113,7 +114,7 @@ const Messagerie = (props) => {
         {name === "" ? (
           <ConvNull />
         ) : (
-          <div className="w-4/6">
+          <div className="w-4/6 h-full">
             <Conversation
               // grp="yes"
               cnvslctd="yes"

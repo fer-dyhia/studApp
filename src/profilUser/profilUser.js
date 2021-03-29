@@ -15,15 +15,9 @@ export default function ProfilUser(props) {
     const infos = useSelector((state) => state.infos)
     const User = useSelector((state) => state.user)
     
-    useEffect(() => {
-        if(props.location.state.username==User.credentials.username){
-            const uid={uid:User.credentials.uid}
-            // GetAuthUser(dispatch,uid)
-        }
-        
+    useEffect(() => {   
         let user={username:props.location.state.username}
           getUserDetails(dispatch,user)
-        //   getFollowers(dispatch,user)
     }
           ,[window.location])
           
@@ -38,7 +32,7 @@ export default function ProfilUser(props) {
 
 <div className='grid grid-cols-3 '>
     <div className='bg-white'>
-        <Gauche info={infos.selectedUser.user} />
+        <Gauche info={infos.selectedUser.user} followers={infos.selectedUser.followers} />
     </div>
     
     <div className='col-span-2'>

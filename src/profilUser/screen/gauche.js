@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Infos from '../components/infos'
@@ -12,10 +12,10 @@ const dayjs = require('dayjs')
 
 
 const Gauche = (props) => {
-   
+   console.log(props.followers)
 
 
-    const userData = useSelector((state) => state.user)
+    //const userData = useSelector((state) => state.user)
     return (
         <div class='flex flex-col   text-gray-700 shadow-lg bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0'>
             <div class='flex justify-center items-center antialiased font-sans h-full max-h-full no-scrollbar p-4'>
@@ -45,10 +45,10 @@ const Gauche = (props) => {
                         </div>
                     </Link>
                     <div class='px-1'>
-                        {typeof(userData.followers)!="undefined"? userData.followers.length>0 ?userData.followers.map((follower) => {
-                            <Friend nom={follower.username} img={follower.imageUrl} />
+                        {props.followers.length>0 ?props.followers.map((follower) => {
+                            return <Friend nom={follower.username} img={follower.imageUrl} />
                         }) 
-                         :<div>No followers</div>:null}
+                         :<div>No followers</div>}
                     </div>
                 </div>
             </div>
