@@ -42,7 +42,7 @@ export default function Post4() {
                          <div class=' grid grid-cols-3 justify-center p-4'>
                         <img
                             class='w-10 h-10 rounded-full object-cover'
-                            src='https://images.pexels.com/photos/2955305/pexels-photo-2955305.jpeg?auto=compress&cs=tinysrgb&h=650&w=940'
+                            src={user.imageUrl}
                             alt='Profile image'
                         />
                         <span class='absolute bottom-0 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full'></span>
@@ -70,7 +70,7 @@ export default function Post4() {
                                 <div className=' col-span-1 ' > 
                                     <img
                                         className=' w-10 h-10 rounded-full object-cover pr-0 '
-                                        src='https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+                                        src={user.imageUrl}
                                         alt='avatar'
                                     />
                                 </div> 

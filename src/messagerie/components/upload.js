@@ -10,6 +10,7 @@ import Uplocomp from "./uplocomp";
 import Uploimg from "./uploimg";
 import Uplofile from "./uplofile";
 import Uplolink from "./uplolink";
+import ImageGridList from "./imageGallery"
 
 const Upload = () => {
   return (
@@ -17,9 +18,11 @@ const Upload = () => {
       <div className="flex flex-col flex-wrap w-full sm:flex-col sm:justify-around">
         <Uplocomp
           funct="Images"
-          icone={<RiArrowRightSLine />}
-          iconemd={<BsImages />}
+         // icone={<RiArrowRightSLine />}
+          //iconemd={<BsImages />}
         />
+        
+
         {/* <div className="flex flex-wrap">
           <Uploimg />
           <Uploimg />
@@ -27,36 +30,9 @@ const Upload = () => {
           <Uploimg />
           <Uploimg />
         </div> */}
-        <Uplocomp
-          funct="Fichiers"
-          icone={<RiArrowRightSLine />}
-          iconemd={<BsFiles />}
-        />
-        {/* <div className="flex flex-col">
-          <Uplofile />
-          <Uplofile />
-          <Uplofile />
-          <Uplofile />
-          <Uplofile />
-        </div> */}
-        <Uplocomp
-          funct="Liens"
-          icone={<RiArrowRightSLine />}
-          iconemd={<RiLinksFill />}
-        />
-        {/* <div className="flex flex-col">
-          <Uplolink />
-          <Uplolink />
-          <Uplolink />
-          <Uplolink />
-          <Uplolink />
-        </div> */}
-        <Uplocomp
-          funct="Recherche"
-          icone={<BiSearchAlt />}
-          iconemd={<BiSearchAlt />}
-        />
+        
       </div>
+      <ImageGridList/>
     </div>
   );
 };

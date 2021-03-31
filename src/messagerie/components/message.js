@@ -10,7 +10,7 @@ const Message = (props) => {
       <button
         onClick={() => {
           let infos={
-            username:name,
+            username:username,
             name:name,
             img:props.img
           }

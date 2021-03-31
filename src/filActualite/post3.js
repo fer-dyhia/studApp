@@ -41,6 +41,7 @@ export default function Post3() {
             formData.append(i, file)
         })
         UploadImagePost(dispatch, formData)
+        
     }
     const removeImage = (id) => {
         setImage({
@@ -56,7 +57,7 @@ export default function Post3() {
                 <div className='rounded-full '>
                    <textarea className='w-full md:w-full h-24 resize-none border-gray-200 rounded-md' onChange={(e) => setBody(e.target.value)} value={body} placeholder="Exprimez vous ici !"> </textarea>
                </div>
-            <div className=' flex justify-center focus:outline-none  '> {image != '' ? <img src={image} width='200PX' height='200px' /> : null}</div>
+            <div className=' flex justify-center focus:outline-none  '> {data.image != '' ? <img src={data.image} width='200PX' height='200px' /> : null}</div>
 
             <div className='grid grid-cols-4 focus:outline-none'>
                 <div className='col-span-3 grid grid-cols-3 ml-3 '>

@@ -99,8 +99,9 @@ export const getNotifications=(dispatch,user) => {
 }
 export const markNotificationsRead = (dispatch,info)=>{
     axios
-      .post('/notifications',info)
+      .post('/users/markNotificationsRead',info)
       .then(() => {
+          console.log("yess")
         dispatch({
           type: MARK_NOTIFICATIONS_READ
         });

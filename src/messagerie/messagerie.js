@@ -36,7 +36,7 @@ const Messagerie = (props) => {
   const [unsub, setUnsub] = useState();
   const [prec, setPrec] = useState(infos.name);
 
-  //console.log(infos.img);
+  console.log(username);
 
   useEffect(() => {
     getConversations(dispatch, userData.credentials.username);
@@ -45,8 +45,8 @@ const Messagerie = (props) => {
   const get_user = (info) => {
     const name_user = info.name;
     const img_user = info.img;
-    console.log(info.img)
-    setUser(username);
+    console.log(info.username)
+    setUser(info.username);
     setPrec(infos.name);
 
     setInfos({
@@ -97,7 +97,7 @@ const Messagerie = (props) => {
   return (
     <div className="flex antialiased h-screen overscroll-none text-gray-800">
       <Navbar imageUrl={userData.credentials.imageUrl} click={setlist} />
-      <div className="flex flex-row h-full w-full overflow-hidden">
+      {/* <div className="flex flex-row h-full w-full overflow-hidden"> */}
         <div className="p-2 h-full w-3/12 bg-gray-50">
           <SearchP />
 
@@ -125,7 +125,7 @@ const Messagerie = (props) => {
           </div>
         )}
         <RightBar name={username} img={infos.img} />
-      </div>
+      {/* </div> */}
     </div>
   );
 };

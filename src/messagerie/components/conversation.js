@@ -20,7 +20,7 @@ const Conversation = (props) => {
   const dispatch = useDispatch();
   const info = useSelector((state) => state.infos);
   const user = useSelector((state) => state.user);
-  console.log(props.img)
+  
 
   return props.cnvslctd == "yes" ? (
     <div className="flex w-full shadow-lg">
