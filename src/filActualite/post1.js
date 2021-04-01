@@ -14,14 +14,41 @@ import { Divider } from '@material-ui/core'
 
 import logo from '../img/logo2.png'
 import logor from '../img/logo5.png'
+import algoliasearch from 'algoliasearch/lite';
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+const searchClient = algoliasearch('XGD6GDN9M5', 'e22f85425f06d8deb778c40aaf9d2b0b',{
+    _useRequestCache: true,
+  });
+
+const algoliaClient = {
+    search(requests) {
+      const shouldSearch = requests.some(({ params: { query }}) => query !== '');
+      if (shouldSearch) {
+        return searchClient.search(requests);
+      }
+      return Promise.resolve({
+        results: [{ hits: [] }],
+      });
+    },
+    searchForFacetValues: searchClient.searchForFacetValues,
+  };
+
+
+
 
 export default function Post1() {
     const User = useSelector((state) => state.user)
-    //console.log(User.credentials)
+
+   
+    
+
     return (
         <div className='fixed z-50 w-full md:w-full bg-gray-800 shadow-xl border-b-2 border-gray-200 '>
             {(User.loading != null) | true ? (
+                
                 <div className='flex flex-row  '>
+                    <InstantSearch searchClient={algoliaClient} indexName="Users">
+                
                     <div className=' flex items-center w-9/12'>
                         <div className='w-0 md:w-1/5 pl-0 md:pl-2 pt-0 md:pt-2  invisible md:visible  cursor-pointer '>
                                 <img src={logo} alt='logo'/>
@@ -30,14 +57,23 @@ export default function Post1() {
                                 <img src={logor} alt='logo'/>
                         </div>
             
-                                <div className='pt-1 relative text-gray-800 pl-2 pr-2 md:pl-8 md:pr-8'>
-                                    <input className=' border-2 border-gray-400 focus:bg-white bg-gray-50 w-36 md:w-96 h-8 md:h-10 rounded-full ' type='search' name='search' placeholder='Recherche' />
-                                    <button type='submit'>
-                                        <BiSearch className=' absolute md:mt-4 mt-3 mr-4 md:mr-10 right-0 top-0  '> </BiSearch>
-                                    </button>
-                                </div>
+                                
+                                
+                                     <SearchBox />
+                                     <Hits />
+                                      
+                                   
+                                   
+       
+                                
+                                
+                                
                   
                     </div>
+                    </InstantSearch>
+                    
+                    
+                   
 
                     <div className=' flex flex-row space-x-3 justify-center items-center text-gray-100   '>
                         <div className= 'visible md:invisible '>
@@ -74,6 +110,7 @@ export default function Post1() {
 
                     </div>
                 </div>
+                
             ) : null}
         </div>
     )
