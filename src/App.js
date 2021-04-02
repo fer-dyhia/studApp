@@ -20,6 +20,7 @@ import Invitation from './filActualite/invitation'
 import EditProfil from './profilUser/components/Editprofil'
 import friends from './profilUser/components/friend'
 import AuthRoute from "./util/AuthRoute"
+import ChatBody from "./mesagerie-main/components/chatBody/ChatBody"
 
 const config = require('./config')
 
@@ -34,6 +35,7 @@ const App = () => {
                         <Route path='/' exact component={dashboard} />
                         <Route path='/signin' component={Signin} />
                         <Route path='/signup' component={Signup} />
+                        <Route path='/messagerie-main' component={ChatBody} />
                         <AuthRoute path='/filActualite' component={filActualite} />
                         <AuthRoute path='/iterfaceUser' component={iterfaceUser} />
                         <AuthRoute path='/messagerie' component={messagerie} />

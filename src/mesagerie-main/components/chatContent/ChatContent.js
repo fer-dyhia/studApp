@@ -1,99 +1,82 @@
 import React, { Component, useState, createRef, useEffect } from "react";
-
 import "./chatContent.css";
 import Avatar from "../chatList/Avatar";
 import ChatItem from "./ChatItem";
+import { useDispatch, useSelector } from "react-redux";
+import { MessageUser,UploadImagePost } from "../../../Redux/Actions/dataAction";
+import { ReadMsg } from "../../../Redux/Actions/dataAction";
 
-export default class ChatContent extends Component {
-  messagesEndRef = createRef(null);
-  chatItms = [
-    {
-      key: 1,
-      image:
-        "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-      type: "",
-      msg: "Hi Tim, How are you?",
-    },
-    {
-      key: 2,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
-      type: "other",
-      msg: "I am fine.",
-    },
-    {
-      key: 3,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
-      type: "other",
-      msg: "What about you?",
-    },
-    {
-      key: 4,
-      image:
-        "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-      type: "",
-      msg: "Awesome these days.",
-    },
-    {
-      key: 5,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
-      type: "other",
-      msg: "Finally. What's the plan?",
-    },
-    {
-      key: 6,
-      image:
-        "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-      type: "",
-      msg: "what plan mate?",
-    },
-    {
-      key: 7,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
-      type: "other",
-      msg: "I'm taliking about the tutorial",
-    },
-  ];
+const  ChatContent =(props)=> {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      chat: this.chatItms,
-      msg: "",
+  const [Message, setMessage] = useState("");
+  const dispatch = useDispatch();
+  const user=useSelector((state)=>state.user)
+  const data=useSelector((state)=>state.data)
+  const infos=useSelector((state)=>state.infos)
+  const [uploading, setUploading] = useState(false)
+  const [image, setImage] = useState('')
+  const messagesEndRef = createRef(null);
+
+  const send = () => {
+    
+    const message = {
+      sourceName: user.credentials.username,
+      body: Message,
+      imageUrl:image!=""? data.image :"",
+      convId: props.convId,
     };
-  }
-
-  scrollToBottom = () => {
-    this.messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    if(message.body!="" | message.imageUrl != ""){
+      MessageUser(dispatch, message);
+      setImage("")
+      setMessage("")
+    }
+   
+  };
+  
+  const onStateChange = (e) => {
+    //this.setState({ msg: e.target.value });
+  };
+  const focus = () => {
+    let infos = {
+      convId: props.convId,
+      username: user.credentials.username,
+    };
+    ReadMsg(dispatch, infos);
   };
 
-  componentDidMount() {
-    window.addEventListener("keydown", (e) => {
-      if (e.keyCode == 13) {
-        if (this.state.msg != "") {
-          this.chatItms.push({
-            key: 1,
-            type: "",
-            msg: this.state.msg,
-            image:
-              "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-          });
-          this.setState({ chat: [...this.chatItms] });
-          this.scrollToBottom();
-          this.setState({ msg: "" });
-        }
-      }
-    });
-    this.scrollToBottom();
-  }
-  onStateChange = (e) => {
-    this.setState({ msg: e.target.value });
-  };
+  const onUpload = (e) => {
+    const files = Array.from(e.target.files)
+    setUploading(true)
 
-  render() {
+    const formData = new FormData()
+
+    files.forEach((file, i) => {
+        formData.append(i, file)
+    })
+    UploadImagePost(dispatch, formData)
+    setImage(data.image)
+    console.log(image)
+}
+const removeImage = (id) => {
+    setImage({
+        image: image.filter((image) => image.public_id !== id),
+    })
+}
+const EnterSend=(e) => {
+  if (e.key==='Enter'){
+    send()
+  }
+}
+useEffect(() => {
+  if(messagesEndRef){
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth",
+    block: "nearest",
+    inline: "start"});
+    console.log("scolled")
+  }
+},[messagesEndRef])
+
+  
     return (
       <div className="main__chatcontent">
         <div className="content__header">
@@ -101,9 +84,9 @@ export default class ChatContent extends Component {
             <div className="current-chatting-user">
               <Avatar
                 isOnline="active"
-                image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU"
+                image={props.image}
               />
-              <p>Tim Hover</p>
+              <p>{props.username}</p>
             </div>
           </div>
 
@@ -117,18 +100,22 @@ export default class ChatContent extends Component {
         </div>
         <div className="content__body">
           <div className="chat__items">
-            {this.state.chat.map((itm, index) => {
+            {infos.messages.length>0 ?infos.messages.map((itm, index) => {
+              
               return (
                 <ChatItem
                   animationDelay={index + 2}
-                  key={itm.key}
-                  user={itm.type ? itm.type : "me"}
-                  msg={itm.msg}
-                  image={itm.image}
+                  key={index}
+                  seen={itm.seen}
+                  user= {itm.sourceName==user.credentials.username?"me":"no"}
+                  msg={itm.body}
+                  image={props.image}
                 />
+                
               );
-            })}
-            <div ref={this.messagesEndRef} />
+             
+            }):<div className="dummy_div"/>}
+            <div ref={messagesEndRef} />
           </div>
         </div>
         <div className="content__footer">
@@ -153,8 +140,10 @@ export default class ChatContent extends Component {
             <input
               type="text"
               placeholder="Type a message here"
-              onChange={this.onStateChange}
-              value={this.state.msg}
+              onChange={(e)=>setMessage(e.target.value)}
+              value={Message}
+              onKeyPress={EnterSend}
+              onFocus={focus}
             />
             <button className="btnSendMsg" id="sendMsgBtn">
               <svg
@@ -176,5 +165,5 @@ export default class ChatContent extends Component {
         </div>
       </div>
     );
-  }
 }
+export default ChatContent

@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import Avatar from "./Avatar";
 
-export default class ChatListItems extends Component {
-  constructor(props) {
-    super(props);
-  }
-  selectChat = (e) => {
+const  ChatListItems= (props)=> {
+ 
+  const selectChat = (e) => {
     for (
       let index = 0;
       index < e.currentTarget.parentNode.children.length;
@@ -14,29 +12,37 @@ export default class ChatListItems extends Component {
       e.currentTarget.parentNode.children[index].classList.remove("active");
     }
     e.currentTarget.classList.add("active");
+    let infos={
+      username:props.username,
+      name:props.name,
+      img:props.img
+    }
+    props.get_user(infos);
+    props.click(infos.name);
+   
   };
 
-  render() {
-    return (
-      <div
-        style={{ animationDelay: `0.${this.props.animationDelay}s` }}
-        onClick={this.selectChat}
-        className={`chatlist__item ${
-          this.props.active ? this.props.active : ""
-        } `}
-      >
-        <Avatar
-          image={
-            this.props.image ? this.props.image : "http://placehold.it/80x80"
-          }
-          isOnline={this.props.isOnline}
-        />
+  return (
+    <div
+      style={{ animationDelay: `0.${props.animationDelay}s` }}
+      onClick={selectChat}
+      className={`chatlist__item ${
+       props.active ? props.active : ""
+      } `}
+    >
+      <Avatar
+        image={
+          props.image ? props.image : "http://placehold.it/80x80"
+        }
+        isOnline={props.isOnline}
+      />
 
-        <div className="userMeta">
-          <p>{this.props.name}</p>
-          <span className="activeTime">32 mins ago</span>
-        </div>
+      <div className="userMeta">
+        <p>{props.username}</p>
+        <span className="activeTime">32 mins ago</span>
       </div>
-    );
-  }
+    </div>
+  ); 
+  
 }
+ export default ChatListItems
