@@ -165,6 +165,7 @@ export const loginUser = (userData, history, dispatch) => {
         })
         .catch((e) => {
             console.error(e)
+            window.alert ("error")
             dispatch({ type: SET_ERRORS, payload: e.data })
         })
 }

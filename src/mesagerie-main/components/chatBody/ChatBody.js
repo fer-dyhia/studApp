@@ -56,11 +56,17 @@ const  ChatBody = () =>{
 
   
     return (
-      <div className="main__chatbody">
+      <div className="mt-12 ">
+        <div className="absolute back top-0 left-0 right-0 bottom-0 h-screen"/>
+        <div className="main__chatbody bg-gray-50 ">
         <ChatList click={Click} get_user={get_user}/>
         <ChatContent convId={infos.name} image={infos.image} username={username} />
         <UserProfile username={username} image={infos.img} />
+        </div>
       </div>
+        
+
+
     );
   
 }

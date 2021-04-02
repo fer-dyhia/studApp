@@ -1,9 +1,18 @@
+html{
+  margin:0;
+  padding: 0;
+  width:100vw;
+  position: relative;
+ 
+}
 .main__chatbody {
   height: 100%;
-  margin-top: 8vh;
   flex-grow: 1;
-  background-color: #f4f3f8;
   border-radius: 10px;
   padding: 15px 20px;
   display: flex;
+}
+.back{
+  z-index: -1;
+background: linear-gradient(90deg, rgba(57, 146, 230, 0.281) 0%, rgba(205, 205, 212, 0.486) 35%, rgba(195, 133, 182, 0.424) 100%);
 }

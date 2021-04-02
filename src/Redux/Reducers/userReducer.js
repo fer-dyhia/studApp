@@ -6,6 +6,7 @@ const initialState = {
     credentials: {},
     OnlineUsers: [],
     followers: null,
+    error:null
 }
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -38,7 +39,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                errors: action.payload,
+                error: action.payload,
             }
 
         case CLEAR_ERRORS:

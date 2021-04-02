@@ -11,7 +11,7 @@ import { FaFacebook } from 'react-icons/fa'
 
 //redux
 import { loginUser } from '../Redux/Actions/authUser'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
 export default function Signin({ loginForm }) {
@@ -23,6 +23,7 @@ export default function Signin({ loginForm }) {
 
     const dispatch = useDispatch()
     const history = useHistory()
+    const user = useSelector((state)=>state.user)
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -30,14 +31,15 @@ export default function Signin({ loginForm }) {
             email: email,
             password: password,
         }
-
-        loginUser(user, history, dispatch)
+        const errors = validation2(user)
+          loginUser(user, history, dispatch) 
     }
 
     const signGoogle = (e) => {
         e.preventDefault()
         LoginWithGoogle()
     }
+    
 
     // useEffect(() => {
     //     firebase.auth.onAuthStateChanged((user) => {
