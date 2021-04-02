@@ -45,7 +45,9 @@ dayjs.extend(relativeTime)
               animationDelay={i + 1}
               active={item.active ? "active" : ""}
               isOnline={item.isOnline ? "active" : ""}
+              lastMessage={item.LastMsg}
               image={Image}
+
             />
           );
         })}

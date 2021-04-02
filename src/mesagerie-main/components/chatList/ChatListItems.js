@@ -39,7 +39,10 @@ const  ChatListItems= (props)=> {
 
       <div className="userMeta">
         <p>{props.username}</p>
-        <span className="activeTime">32 mins ago</span>
+        {props.lastMessage.seen ?
+          <span className="font-light subpixel-antialiased ">{props.lastMessage.body}</span>
+        :<span className="font-medium subpixel-antialiased ">{props.lastMessage.body}</span>}
+        
       </div>
     </div>
   ); 
