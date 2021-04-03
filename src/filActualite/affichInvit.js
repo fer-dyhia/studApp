@@ -1,6 +1,7 @@
 import { info } from 'firebase-functions/lib/logger'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { sendRequest } from '../Redux/Actions/userActions'
 import { getOnlineUsers } from '../Redux/Actions/userActions'
 import { getSuggestedUsers } from '../Redux/Actions/dataAction'
@@ -49,8 +50,8 @@ export default function AffichInvit() {
                <div className=' flex flex-col '>
                <div className='grid grid-cols-1  '>
                   
-               {infos.notif.length >0 ? infos.notif.map((invit) => {
-                   if(invit.type=="follow"){
+               {infos.invitations.length >0 ? infos.invitations.map((invit) => {
+                   
                 return(<div className=' grid grid-cols-5 justify-center p-2 border-t-2 border-b-2' >
                     <div className=' col-span-1 ' > 
                         <img
@@ -58,20 +59,20 @@ export default function AffichInvit() {
                             src='https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
                             alt='avatar'
                         />
-                        <h4 className="text-gray-500">{invit.sender}</h4>
+                        
+                        <h4 className="text-gray-500"><Link to={{ pathname:` /invitation` }}  role='menuitem'>{invit.Owner}</Link></h4>
                     </div> 
                     <div className=' col-span-2 w-10 h-10' > 
-
-                        <h2 className='pt-1 pl-4 text-sm text-gray-900'></h2>
+                       
                     </div>    
-                    <div className=' col-span-1' >
+                    {/* <div className=' col-span-1' >
                         <AiOutlineCheck className=' cursor-pointer w-6 h-6 hover:h-10 hover:w-10 text-green-800 transform hover:-translate-y-1 hover:scale-110 '/>
                     </div>
                     <div className=' col-span-1' >
                         <AiOutlineClose  className=' cursor-pointer w-6 h-6 hover:h-10 hover:w-10 text-red-800 transform hover:-translate-y-1 hover:scale-110 '/>
-                    </div>
+                    </div> */}
             </div>)
-                   }
+                   
                }):null}
    
                            

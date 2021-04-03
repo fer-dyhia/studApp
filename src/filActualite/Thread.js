@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPosts } from '../Redux/Actions/postAction'
-import { getFollowers, getNotifications} from '../Redux/Actions/userActions'
+import { getFollowers, getNotifications,getInvitations} from '../Redux/Actions/userActions'
 
 import Publication from './publication'
 
@@ -16,6 +16,7 @@ export default function Thread() {
 
         getPosts(dispatch, user)
         getNotifications(dispatch,user)
+        getInvitations(dispatch,user)
         getFollowers(dispatch,user)
     }, [])
 

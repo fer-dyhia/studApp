@@ -9,7 +9,8 @@ import {
     SET_NOTIFICATIONS,
     SET_FOLLOW_REQUESTS,
     SET_FOLLOWERS,
-    MARK_NOTIFICATIONS_READ
+    MARK_NOTIFICATIONS_READ,
+    SET_INVITATIONS
 } from '../types'
 import axios from 'axios'
 import { InfoOutlined } from '@material-ui/icons'
@@ -49,7 +50,7 @@ export const declineRequest = (dispatch, req) => {
     console.log(request)
     axios
         .post('/users/declineFollowRequest', request)
-        .then((res) => {
+        .then(() => {
             dispatch({ type: DECLINE_REQUEST })
         })
         .catch((e) => {
@@ -109,3 +110,14 @@ export const markNotificationsRead = (dispatch,info)=>{
       .catch((err) => console.log(err));
   };
 
+export const getInvitations=(dispatch,user) => {
+    console.log(user)
+    fire.firestore().collection("followRequest").where("AccountName","==",user.username).orderBy("date","desc").onSnapshot((snapshot) => {
+        let invitations=[]
+        snapshot.forEach((invit) => {
+           invitations.push(invit.data())
+        })
+        dispatch({type:SET_INVITATIONS,payload:invitations})
+
+    })
+}

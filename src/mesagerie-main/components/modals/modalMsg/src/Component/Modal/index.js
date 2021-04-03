@@ -31,7 +31,8 @@ const Modal = (props) => {
       }
       console.log(conv)
       SendMessage(dispatch,conv)
-      
+      setBody("")
+      onClose()
     }
     
   }

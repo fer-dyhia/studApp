@@ -2,7 +2,7 @@ import { SUGGEST_USERS, SEND_FOLLOW_REQUEST, SET_FOLLOW_REQUESTS, DECLINE_REQUES
     LOAD_SUCESS_MESSAGE,
     LOAD_CONVERSATIONS,
     LOAD_CONVERSATIONS_SUCESS,
-    SET_NOTIFICATIONS, } from '../types'
+    SET_NOTIFICATIONS,SET_INVITATIONS } from '../types'
 
 const initialState = {
     suggestedUsers: [],
@@ -105,6 +105,18 @@ export default function dataReducer(state = initialState, action) {
             
                     
                   };
+        case SET_INVITATIONS:
+              if(action.payload.length>0){
+               if (state.invitations.length>0){
+                  state.invitations=action.payload
+                  }else{
+                    for(let i= 0;i<action.payload.length;i++){
+                      state.invitations.unshift(action.payload[i])
+                     } 
+                   }
+                }
+                 return {
+                  ...state, };
         case CLEAN_INFOS:
             return {
                         ...initialState,
