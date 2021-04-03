@@ -2,7 +2,7 @@ import React, { Component, useState, createRef, useEffect } from "react";
 import "./chatContent.css";
 import Avatar from "../chatList/Avatar";
 import ChatItem from "./ChatItem";
-import {BsImageFill} from "react-icons/bs"
+import { BsImageFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
   MessageUser,
@@ -27,7 +27,10 @@ const ChatContent = (props) => {
       imageUrl: image != "" ? data.image : "",
       convId: props.convId,
     };
-    if(!(/^\s+$/.test(message.body)) && message.body!=""| message.imageUrl != "") {
+    if (
+      !/^\s+$/.test(message.body) &&
+      (message.body != "") | (message.imageUrl != "")
+    ) {
       MessageUser(dispatch, message);
       setImage("");
       setMessage("");
@@ -99,31 +102,33 @@ const ChatContent = (props) => {
       </div>
       <div className="content__body scrollbar">
         <div className="chat__item">
-          {infos.messages.length > 0 ? (
-            infos.messages.map((itm, index) => {
-              return (
-                <ChatItem
-                  animationDelay={index + 2}
-                  key={index}
-                  seen={itm.seen}
-                  user={
-                    itm.sourceName == user.credentials.username ? "me" : "no"
-                  }
-                  msg={itm.body}
-                  image={props.image}
-                />
-              );
-            })
-          ) : (
-            <div className="dummy_div" />
-          )}
+          <div className="flex flex-col">
+            {infos.messages.length > 0 ? (
+              infos.messages.map((itm, index) => {
+                return (
+                  <ChatItem
+                    animationDelay={index + 2}
+                    key={index}
+                    seen={itm.seen}
+                    user={
+                      itm.sourceName == user.credentials.username ? "me" : "no"
+                    }
+                    msg={itm.body}
+                    image={props.image}
+                  />
+                );
+              })
+            ) : (
+              <div className="dummy_div" />
+            )}
+          </div>
           <div ref={messagesEndRef} />
         </div>
       </div>
       <div className="content__footer">
         <div className="sendNewMessage">
           <button className="image">
-            <BsImageFill/>
+            <BsImageFill />
           </button>
           <input
             className="focus:outline-none"

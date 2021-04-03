@@ -7,6 +7,7 @@ html{
 }
 .main__chatbody {
   height: 35rem;
+  width: 98vw;
   flex-grow: 1;
   border-radius: 10px;
   padding: 0px 0px;
