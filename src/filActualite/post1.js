@@ -1,4 +1,3 @@
-// header
 import React, { useEffect, useState } from 'react'
 import { connectSearchBox,connectHits } from 'react-instantsearch-dom';
 
@@ -42,6 +41,8 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
       type="search"
       value={currentRefinement}
       onChange={event => refine(event.currentTarget.value)}
+      placeholder='Recherche'
+      className='rounded-full static'
     />
     {/* <button onClick={() => refine('')}>Reset query</button>
     {isSearchStalled ? 'My search is stalled' : ''} */}
@@ -49,11 +50,17 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
     
 );
 const Hits = ({ hits }) => (
-  <ol>
+  <div className=' text-gray-500 absolute w-52 '>
+
+  <ol >
     {hits.map(hit => (
-      <li key={hit.objectID}>{hit.username}</li>
-    ))}
+    
+    
+ 
+      <li className='border-b-2  border-blue-700 border-opacity-50  bg-white px-2 py-2' key={hit.objectID}>  <Link to={{ pathname: `/profilUser/${hit.uid}`, state: { username:hit.username} }}  role='menuitem'>{hit.username}</Link></li>
+      ))}
   </ol>
+  </div>
 );
 const CustomHits = connectHits(Hits);
 
@@ -82,11 +89,12 @@ export default function Post1() {
                                 <img src={logor} alt='logo'/>
                         </div>
             
+                                <div className='flex flex-col ml-4'> 
+                                  <div><CustomSearchBox /></div>
+                               <div className='flex justify-center'><CustomHits /></div>  
+                                 </div>
                                 
-                                
-                                 <CustomSearchBox />
-                                 <CustomHits />
-                                      
+                                 
                                    
                                    
        
