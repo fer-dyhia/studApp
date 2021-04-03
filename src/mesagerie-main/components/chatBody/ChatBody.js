@@ -84,7 +84,7 @@ const ChatBody = () => {
       <div className="main__chatbody bg-gray-50 ">
         <Nav OnlineList={setlist} />
         {friendList ? (
-          <OnlineList setConv={setConv} click={click} />
+          <OnlineList setConv={setConv}  click={click} />
         ) : (
           <ChatList click={Click} get_user={get_user} />
         )}

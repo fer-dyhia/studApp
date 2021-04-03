@@ -6,6 +6,7 @@ import ChatListItems from "./ChatListItems";
 import logo from "../../images/logo.png";
 import Modal from "../modals/modalMsg/src/Component/Modal/index";
 import PeopleList from "./PeopleList";
+import { user } from "firebase-functions/lib/providers/auth";
 
 const dayjs = require("dayjs");
 var relativeTime = require("dayjs/plugin/relativeTime");
@@ -13,10 +14,16 @@ dayjs.extend(relativeTime);
 
 const ChatList = (props) => {
   const [show, setShow] = useState(false);
+  const [Selected, setSelected] = useState({username:"",userImage:""});
+  console.log(Selected)
 
   const showModal = (e) => {
     setShow(!show);
   };
+  const selectUser=(user)=>{
+    setSelected({username:user.username,userImage:user.userImage})
+  }
+  
 
   const infos = useSelector((state) => state.infos);
   const userData = useSelector((state) => state.user);
@@ -35,8 +42,8 @@ const ChatList = (props) => {
           </button> */}
         </div>
         <button onClick={(e) => showModal(e)} className="p-2 rounded-lg text-white transition duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 focus:outline-none">New Message</button>
-        <Modal show={show} onClose={showModal}>
-          <PeopleList/>
+        <Modal user={Selected} show={show} onClose={showModal}>
+          <PeopleList select={selectUser}/>
         </Modal>
       </div>
       <div className="chatlist__items">

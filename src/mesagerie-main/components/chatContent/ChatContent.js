@@ -11,7 +11,6 @@ import {
 import { ReadMsg } from "../../../Redux/Actions/dataAction";
 import ImgComponent from "./ImgComponent";
 import ImgSent from "./ImgSent";
-import CustomScroll from 'react-custom-scroll';
 
 const ChatContent = (props) => {
   const [Message, setMessage] = useState("");
@@ -103,8 +102,8 @@ const ChatContent = (props) => {
           </div>
         </div>
       </div>
-      <CustomScroll>
-      <div className="content__body ">
+      
+      <div className="content__body no-scrollbar ">
         <div className="chat__item">
           {infos.messages.length > 0 ? (
             infos.messages.map((itm, index) => {
@@ -131,7 +130,7 @@ const ChatContent = (props) => {
         </div>
       </div>
       <ImgComponent/>
-      </CustomScroll>
+      
       <div className="content__footer">
         <div className="sendNewMessage">
           <button className="image">

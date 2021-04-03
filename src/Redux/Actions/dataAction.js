@@ -108,6 +108,7 @@ export const getRealtimeMessages = (dispatch, userId) => {
 
   export const SendMessage=(dispatch,conv) => {
       axios.post("/users/sendMessage",conv).then(() => {
+        console.log("uess")
           dispatch({type:MESSAGE_UPDATE})
       }).catch((e) => {
           console.log(e)

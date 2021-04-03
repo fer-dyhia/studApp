@@ -45,10 +45,11 @@ export default function Post4() {
                             src={user.imageUrl}
                             alt='Profile image'
                         />
-                        <span class='absolute bottom-0 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full'></span>
+                       
                          </div>
                         <div className=' flex justify-center items-center pl-2 text-gray-900'>
                         <h2>{user.username}</h2>
+                        <span class=' inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full'></span>
                         </div>
                     </div>)
                     }):null}
