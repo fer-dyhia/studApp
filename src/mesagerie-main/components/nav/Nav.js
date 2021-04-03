@@ -11,19 +11,19 @@ const Nav = (props) => {
   return (
     <div className="nav space-y-20">
       <button className="focus:outline-none flex justify-center"onClick={()=>history.push('/filActualite')}>
-        <AiTwotoneHome className="text-3xl text-white" />
+        <AiTwotoneHome className="text-3xl text-white transition duration-500 ease-in-out transform hover:-translate-y-1" />
       </button>
       <button
         className="focus:outline-none flex justify-center"
         onClick={() => props.OnlineList(true)}
       >
-        <FaUserFriends className="text-3xl text-white" />
+        <FaUserFriends className="text-3xl text-white transition duration-500 ease-in-out transform hover:-translate-y-1" />
       </button>
       <button
         className="focus:outline-none flex justify-center"
         onClick={() => props.OnlineList(false)}
       >
-        <AiFillMessage className="text-3xl text-white" />
+        <AiFillMessage className="text-3xl text-white transition duration-500 ease-in-out transform hover:-translate-y-1" />
       </button>
     </div>
   );
