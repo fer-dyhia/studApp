@@ -17,6 +17,16 @@ const ChatList = (props) => {
   const [Selected, setSelected] = useState({username:"",userImage:""});
   console.log(Selected)
 
+  const onMouse = (e) => {
+
+    const x = e.pageX - e.target.offsetLeft
+    const y = e.pageY - e.target.offsetTop
+  
+    e.target.style.setProperty('--x', `${ x }px`)
+    e.target.style.setProperty('--y', `${ y }px`)
+    
+  }
+
   const showModal = (e) => {
     setShow(!show);
   };
@@ -29,10 +39,12 @@ const ChatList = (props) => {
   const userData = useSelector((state) => state.user);
   return (
     <div className="main__chatlist">
-      <div className="flex flex-col items-center mt-1 mb-8">
-        <img src={logo} className="rounded-full w-28 h-28" />
-        <p className="font-semibold">My name</p>
+      <div onMouseMove={(e)=>onMouse(e)}  className="flex flex-col items-center ml-12 mb-4 mt-1  button_avatar rounded-full bg-gray-50">
+        <img src={userData.credentials.imageUrl} className=" w-28 h-28 rounded-full " />
+        <p className="text-base font-semibold text-gray-600">{userData.credentials.username}</p>
       </div>
+      
+      
       <div className="flex justify-between flex-row">
         <div className="chatlist__heading">
           <h2>Chats</h2>
@@ -52,7 +64,7 @@ const ChatList = (props) => {
             (User) => User == userData.credentials.username
           );
           let Username = item.Users[1 - index];
-          let Image = item.Images[1 - index];
+          let Image = item.Images[1- index];
           console.log(Image);
           return (
             <ChatListItems

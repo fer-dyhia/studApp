@@ -19,6 +19,7 @@ const ChatBody = () => {
   const [friendList, setlist] = useState(false);
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
+  console.log(infos.img)
 
   useEffect(() => {
     getConversations(dispatch, userData.credentials.username);
@@ -90,7 +91,7 @@ const ChatBody = () => {
         )}
         <ChatContent
           convId={infos.name}
-          image={infos.image}
+          image={infos.img}
           username={username}
         />
         <UserProfile username={username} image={infos.img} />

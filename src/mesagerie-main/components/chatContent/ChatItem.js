@@ -1,8 +1,10 @@
 import React from "react";
+import {useSelector} from "react-redux";
 import Avatar from "../chatList/Avatar";
 import ImgSent from "./ImgSent";
 import {BsClockHistory} from "react-icons/bs"
 const ChatItem = (props) => {
+  const userData=useSelector((state)=>state.user)
   return (
     <div
       style={{ animationDelay: `0.2s` }}
@@ -19,7 +21,7 @@ const ChatItem = (props) => {
               <span>{props.seen ? "seen" : null}</span>
             </div>
           </div>
-          <Avatar isOnline="active" image={props.image} />
+          <Avatar isOnline="active" image={userData.credentials.imageUrl} />
         </div>
       ) : (
         <div className="flex flex-row items-end">
