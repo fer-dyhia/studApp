@@ -4,6 +4,7 @@ import logo from "../../images/logo.png";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
+import ImageGallery from "./ImageGallery"
 
 const UserProfile = (props) => {
   const toggleInfo = (e) => {
@@ -40,8 +41,7 @@ const UserProfile = (props) => {
           <i className="fa fa-angle-down"></i>
         </div>
         <div className="card__content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          ultrices urna a imperdiet egestas. Donec in magna quis ligula
+          <ImageGallery/>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Avatar from "../chatList/Avatar";
 import ImgSent from "./ImgSent";
-
+import {BsClockHistory} from "react-icons/bs"
 const ChatItem = (props) => {
   return (
     <div
@@ -15,7 +15,7 @@ const ChatItem = (props) => {
 
             {props.imageUrl ?<ImgSent imageUrl={props.imageUrl} />:null}
             <div className="chat__meta">
-              <span></span>
+              <span><BsClockHistory className="text-white text-sm"/></span>
               <span>{props.seen ? "seen" : null}</span>
             </div>
           </div>
@@ -29,7 +29,7 @@ const ChatItem = (props) => {
             <div className="chat__msg pb-2">{props.msg}</div>
             {props.imageUrl ?<ImgSent imageUrl={props.imageUrl} />:null}
             <div className="chat__meta">
-              <span></span>
+              <span><BsClockHistory className="text-gray-500"/></span>
               <span>{props.seen ? "seen" : null}</span>
             </div>
           </div>
