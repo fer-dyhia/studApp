@@ -18,6 +18,8 @@ export const STOP_LOADING_UI = 'STOP_LOADING_UI'
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
 export const LOGOUT_USER = 'LOGOUT_USER'
 export const SUGGEST_USERS = 'SUGGEST_USERS'
+export const CLEAR_IMAGE = 'CLEAR_IMAGE'
+
 // Data reducer types
 
 export const SET_POST = 'SET_POST'

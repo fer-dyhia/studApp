@@ -1,4 +1,4 @@
-import { GET_POST, SUBMIT_POST, DELETE_POST, SUBMIT_COMMENT, CLEAN_POSTS, COMMENT_POST,UNLIKE_POST, LOGOUT_USER, UPLOADING_IMAGE_SUCESS,LIKE_POST, UPLOADING_IMAGE } from '../types'
+import { GET_POST, SUBMIT_POST, DELETE_POST, SUBMIT_COMMENT, CLEAN_POSTS, COMMENT_POST,UNLIKE_POST, LOGOUT_USER, UPLOADING_IMAGE_SUCESS,LIKE_POST, UPLOADING_IMAGE, CLEAR_IMAGE } from '../types'
 
 const initialState = {
    
@@ -23,7 +23,8 @@ export default function postsReducer(state = initialState, action) {
             console.log(state.posts[inde].likeCount)
                 return{...state}
 
-
+        case CLEAR_IMAGE:
+            return{...state,image:null}
         case UNLIKE_POST:
 
             let n = state.posts.findIndex((post) => post.postId === action.payload.postId)

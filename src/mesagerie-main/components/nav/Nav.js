@@ -1,17 +1,30 @@
 import React, { Component } from "react";
 import "./nav.css";
 import logo from "./../../images/logo.png";
+import {AiTwotoneHome} from "react-icons/ai"
+import {FaUserFriends} from "react-icons/fa"
+import {AiFillMessage} from "react-icons/ai"
 
-export default class Nav extends Component {
-  render() {
-    return (
-      <div className="nav">
-        <div className="nav__blocks">
-          <img src=""></img>
-        </div>
-        <div className="nav__blocks"></div>
-        <div className="nav__blocks"></div>
-      </div>
-    );
-  }
-}
+const Nav = (props) => {
+  return (
+    <div className="nav space-y-20">
+      <button className="focus:outline-none flex justify-center">
+        <AiTwotoneHome className="text-3xl text-white" />
+      </button>
+      <button
+        className="focus:outline-none flex justify-center"
+        onClick={() => props.OnlineList(true)}
+      >
+        <FaUserFriends className="text-3xl text-white" />
+      </button>
+      <button
+        className="focus:outline-none flex justify-center"
+        onClick={() => props.OnlineList(false)}
+      >
+        <AiFillMessage className="text-3xl text-white" />
+      </button>
+    </div>
+  );
+};
+
+export default Nav;

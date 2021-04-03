@@ -40,8 +40,8 @@ const  ChatListItems= (props)=> {
       <div className="userMeta">
         <p>{props.username}</p>
         {props.lastMessage.seen ?
-          <span className="font-light subpixel-antialiased ">{props.lastMessage.body}</span>
-        :<span className="font-medium subpixel-antialiased ">{props.lastMessage.body}</span>}
+          <span className="font-normal subpixel-antialiased ">{props.lastMessage.body}</span>
+        :<span className="font-medium text-blue-600 subpixel-antialiased ">{props.lastMessage.body}</span>}
         
       </div>
     </div>

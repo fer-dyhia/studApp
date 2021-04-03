@@ -21,6 +21,7 @@
     "firebase-functions": "^3.13.1",
     "firebaseui": "^4.7.3",
     "moment": "^2.29.1",
+    "node-waves": "^0.7.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-facebook-login": "^4.1.1",
@@ -68,9 +69,11 @@
   },
   "proxy": "https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app",
   "devDependencies": {
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.35",
+    "react-node-waves": "^1.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   }
 }

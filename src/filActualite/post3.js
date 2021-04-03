@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+
+import {CLEAR_IMAGE} from "../Redux/types"
 import { useDispatch, useSelector } from 'react-redux'
 import { submitPost } from '../Redux/Actions/postAction'
 import { FaSearch } from 'react-icons/fa'
@@ -9,6 +11,7 @@ import { BiFile } from 'react-icons/bi'
 import Thread from './Thread'
 import { UploadImagePost, getSuggestedUsers } from '../Redux/Actions/dataAction'
 import { Divider } from '@material-ui/core'
+
 
 export default function Post3() {
     const [username, setUserName] = useState('')
@@ -29,6 +32,7 @@ export default function Post3() {
 
         submitPost(post, user, dispatch)
         setBody('')
+        dispatch({type:CLEAR_IMAGE})
     }
 
     const onUpload = (e) => {
