@@ -78,7 +78,7 @@ const EnterSend=(e) => {
           onFocus={focus}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Écrivez votre message ..."
-          className="w-full focus:outline-none placeholder-gray-400 focus:placeholder-gray-300 text-gray-700 placeholder-gray-600 px-10 bg-gray-100 rounded-full py-2"
+          className="w-full focus:outline-none  focus:placeholder-gray-300 text-gray-700 placeholder-gray-600 px-10 bg-gray-100 rounded-full py-2"
           onKeyPress={(e)=>{EnterSend(e)}}
         
         />

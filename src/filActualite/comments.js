@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { commentOnPost } from '../Redux/Actions/postAction'
+import {Link} from 'react-router-dom'
 
 export default function Comments(props) {
     const [body, setBody] = useState('')
@@ -59,7 +60,9 @@ export default function Comments(props) {
                                     className='rounded-full w-6 h-6 mr-4 shadow-lg '
                                     src='https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'
                                 />
-                                <h3 className='text-blue-600 font-semibold text-l text-center md:text-left '>@{comment.username}</h3>
+                                <h3 className='text-blue-600 font-semibold text-l text-center md:text-left '><Link to={{ pathname: `/profilUser/${user.credentials.uid}`, state: { username:user.credentials.username} }}  role='menuitem'>
+                            @{comment.username}
+                        </Link></h3>
                             </div>
 
                             <p className='text-gray-900 text-l pl-12 py-2 md:text-left '>{comment.body}.</p>

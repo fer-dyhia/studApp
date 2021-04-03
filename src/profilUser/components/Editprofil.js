@@ -60,7 +60,7 @@ const Editprofil = () => {
             <div className="inline-flex items-center space-x-4">
               <img className="rounded-full ml-6 w-32 h-32 " src={user.credentials.imageUrl} />
               <label className="cursor-pointer mt-6">
-                <span className="text-base px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded-xl" >Importer image
+                <span className="text-base px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-xl" >Importer image
                 <input onChange={onUpload} type='file' className="hidden" />
                 </span>
 

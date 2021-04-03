@@ -1,5 +1,6 @@
 // header
 import React, { useEffect, useState } from 'react'
+import { connectSearchBox,connectHits } from 'react-instantsearch-dom';
 
 import { AiFillMessage } from 'react-icons/ai'
 import { BiSearch } from 'react-icons/bi'
@@ -15,7 +16,7 @@ import { Divider } from '@material-ui/core'
 import logo from '../img/logo2.png'
 import logor from '../img/logo5.png'
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+import { InstantSearch } from 'react-instantsearch-dom';
 const searchClient = algoliasearch('XGD6GDN9M5', 'e22f85425f06d8deb778c40aaf9d2b0b',{
     _useRequestCache: true,
   });
@@ -33,6 +34,30 @@ const algoliaClient = {
     searchForFacetValues: searchClient.searchForFacetValues,
   };
 
+
+
+const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
+   <div>
+       <input
+      type="search"
+      value={currentRefinement}
+      onChange={event => refine(event.currentTarget.value)}
+    />
+    {/* <button onClick={() => refine('')}>Reset query</button>
+    {isSearchStalled ? 'My search is stalled' : ''} */}
+   </div>
+    
+);
+const Hits = ({ hits }) => (
+  <ol>
+    {hits.map(hit => (
+      <li key={hit.objectID}>{hit.username}</li>
+    ))}
+  </ol>
+);
+const CustomHits = connectHits(Hits);
+
+const CustomSearchBox = connectSearchBox(SearchBox);
 
 
 
@@ -59,8 +84,8 @@ export default function Post1() {
             
                                 
                                 
-                                     <SearchBox />
-                                     <Hits />
+                                 <CustomSearchBox />
+                                 <CustomHits />
                                       
                                    
                                    
