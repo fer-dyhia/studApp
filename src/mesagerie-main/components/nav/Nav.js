@@ -4,11 +4,13 @@ import logo from "./../../images/logo.png";
 import {AiTwotoneHome} from "react-icons/ai"
 import {FaUserFriends} from "react-icons/fa"
 import {AiFillMessage} from "react-icons/ai"
+import {useHistory} from "react-router"
 
 const Nav = (props) => {
+  const history=useHistory();
   return (
     <div className="nav space-y-20">
-      <button className="focus:outline-none flex justify-center">
+      <button className="focus:outline-none flex justify-center"onClick={()=>history.push('/filActualite')}>
         <AiTwotoneHome className="text-3xl text-white" />
       </button>
       <button

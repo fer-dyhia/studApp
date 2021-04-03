@@ -11,7 +11,7 @@ html{
   border-radius: 10px;
   padding: 0px 0px;
   display: flex;
-  margin:20px;
+  margin:0;
 }
 .back{
   z-index: -1;

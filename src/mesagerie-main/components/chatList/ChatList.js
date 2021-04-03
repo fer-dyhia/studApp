@@ -3,18 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import BtnMsg from "../buttons/btnMsg";
 import "./chatList.css";
 import ChatListItems from "./ChatListItems";
-import logo from "../../images/logo.png"
+import logo from "../../images/logo.png";
+import Modal from "../modals/modalMsg/src/Component/Modal/index";
+
 const dayjs = require("dayjs");
 var relativeTime = require("dayjs/plugin/relativeTime");
 dayjs.extend(relativeTime);
 
 const ChatList = (props) => {
+  const [show, setShow] = useState(false);
+
+  const showModal = (e) => {
+    setShow(!show);
+  };
+
   const infos = useSelector((state) => state.infos);
   const userData = useSelector((state) => state.user);
   return (
     <div className="main__chatlist">
       <div className="flex flex-col items-center mt-1 mb-8">
-        <img src={logo} className="rounded-full w-28 h-28"/>
+        <img src={logo} className="rounded-full w-28 h-28" />
         <p className="font-semibold">My name</p>
       </div>
       <div className="flex justify-between flex-row">
@@ -25,7 +33,8 @@ const ChatList = (props) => {
             <i className="fa fa-ellipsis-h"></i>
           </button> */}
         </div>
-        <BtnMsg/>
+        <button onClick={(e) => showModal(e)}>New Message</button>
+        <Modal show={show} onClose={showModal}/>
       </div>
       <div className="chatlist__items">
         {infos.conversations.map((item, i) => {

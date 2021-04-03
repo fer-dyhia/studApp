@@ -79,7 +79,7 @@ const ChatBody = () => {
   };
 
   return (
-    <div className="mt-12 ">
+    <div className="mt-12 p-0">
       <div className="absolute back top-0 left-0 right-0 bottom-0 h-screen" />
       <div className="main__chatbody bg-gray-50 ">
         <Nav OnlineList={setlist} />
