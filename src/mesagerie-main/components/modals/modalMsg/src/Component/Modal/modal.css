@@ -70,7 +70,7 @@ body {
   padding: 0.5rem 1rem;
 }
 .modal .actions input{
-  border:rgb(253, 213, 208) solid 2px ;
+  border:rgb(255, 245, 244) solid 2px ;
 }
 #centered-toggle-button {
   position: absolute;

@@ -5,6 +5,7 @@ import "./chatList.css";
 import ChatListItems from "./ChatListItems";
 import logo from "../../images/logo.png";
 import Modal from "../modals/modalMsg/src/Component/Modal/index";
+import PeopleList from "./PeopleList";
 
 const dayjs = require("dayjs");
 var relativeTime = require("dayjs/plugin/relativeTime");
@@ -34,7 +35,9 @@ const ChatList = (props) => {
           </button> */}
         </div>
         <button onClick={(e) => showModal(e)} className="p-2 rounded-lg text-white transition duration-500 ease-in-out bg-blue-400 hover:bg-blue-500">New Message</button>
-        <Modal show={show} onClose={showModal}/>
+        <Modal show={show} onClose={showModal}>
+          <PeopleList/>
+        </Modal>
       </div>
       <div className="chatlist__items">
         {infos.conversations.map((item, i) => {
