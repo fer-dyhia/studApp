@@ -13,7 +13,7 @@ const ChatItem = (props) => {
           <div className="chat__item__content">
             <div className="chat__msg pb-2">{props.msg}</div>
 
-            <ImgSent />
+            {props.imageUrl ?<ImgSent imageUrl={props.imageUrl} />:null}
             <div className="chat__meta">
               <span></span>
               <span>{props.seen ? "seen" : null}</span>
@@ -27,7 +27,7 @@ const ChatItem = (props) => {
 
           <div className="chat__item__content">
             <div className="chat__msg pb-2">{props.msg}</div>
-            <ImgSent />
+            {props.imageUrl ?<ImgSent imageUrl={props.imageUrl} />:null}
             <div className="chat__meta">
               <span></span>
               <span>{props.seen ? "seen" : null}</span>

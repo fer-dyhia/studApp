@@ -1,9 +1,9 @@
 import React from "react"
 import logo from "../../images/logo.png"
-const ImgSent =() => {
+const ImgSent =(props) => {
     return (
         <div className="h-44 w-48">
-            <img src={logo} className="w-full h-full rounded-lg"/>
+            <img src={props.imageUrl} className="w-full h-full rounded-lg"/>
         </div>
     )
 }

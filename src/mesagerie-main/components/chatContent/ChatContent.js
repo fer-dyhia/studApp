@@ -1,4 +1,5 @@
 import React, { Component, useState, createRef, useEffect } from "react";
+import axios from 'axios'
 import "./chatContent.css";
 import Avatar from "../chatList/Avatar";
 import ChatItem from "./ChatItem";
@@ -26,7 +27,7 @@ const ChatContent = (props) => {
     const message = {
       sourceName: user.credentials.username,
       body: Message,
-      imageUrl: image != "" ? data.image : "",
+      imageUrl: image != "" ?image : "",
       convId: props.convId,
     };
     if (
@@ -59,14 +60,17 @@ const ChatContent = (props) => {
     files.forEach((file, i) => {
       formData.append(i, file);
     });
-    UploadImagePost(dispatch, formData);
-    setImage(data.image);
-    console.log(image);
+    axios
+        .post('/uploadImage', formData)
+        .then((res) => {
+            console.log(res.data)
+            setImage(res.data);
+            console.log(res.data)
+        })
+        .catch((err) => console.log(err))
   };
   const removeImage = (id) => {
-    setImage({
-      image: image.filter((image) => image.public_id !== id),
-    });
+    setImage("");
   };
   const EnterSend = (e) => {
     if (e.key === "Enter") {
@@ -117,6 +121,7 @@ const ChatContent = (props) => {
                     user={
                       itm.sourceName == user.credentials.username ? "me" : "no"
                     }
+                    imageUrl={itm.imageUrl}
                     msg={itm.body}
                     image={props.image}
                   />
@@ -129,13 +134,14 @@ const ChatContent = (props) => {
           <div ref={messagesEndRef} />
         </div>
       </div>
-      <ImgComponent/>
+      {image!=""?<ImgComponent removeImage={removeImage} image={image}/>:null}
       
       <div className="content__footer">
         <div className="sendNewMessage">
-          <button className="image">
-            <BsImageFill />
-          </button>
+        <label className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-blue-400 bg-transparent hover:bg-blue-400 hover:text-white focus:outline-none">
+          <input onChange={onUpload} type='file'accept="image/png, image/jpeg"  className='hidden '/>
+            <BsImageFill/>
+          </label>
           <input
             className="focus:outline-none"
             type="text"
