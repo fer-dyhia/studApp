@@ -7,21 +7,28 @@ import {
     IfFirebaseUnAuthed
    
   } from "@react-firebase/auth";
+import NotVerification from '../dashboard/NotVerfication';
 
 const AuthRoute = ({component: Component ,...rest}) => {
-    const user=useSelector((state)=>state.user)
-    console.log(user.authenticated)
+    const User=useSelector((state)=>state.user)
+    console.log(User.authenticated)
     
     return(
         <FirebaseAuthConsumer>
-            {({isSignedIn})=>{
+            {({isSignedIn,user})=>{
             
              return(<Route {...rest} render={(props) => {
           
            
             
-            if(isSignedIn|user.authenticated){
-                return <Component {...props} />
+            if(isSignedIn|User.authenticated){
+                // if(user.emailVerified){
+                    return <Component {...props} />
+
+                // }else {
+                //      return <NotVerification/>
+                // }
+               
 
             }else{
                 return <Redirect to={`/Signin`} />
