@@ -85,7 +85,8 @@
 .chat__item__content {
   background-color: #4b4ef0;
   color: #fff;
-  padding: 13px;
+  padding: 4px;
+  margin-left: 0rem;
   border-radius: 10px 10px 0 10px;
   max-width: 200px;
   min-width: 200px;
