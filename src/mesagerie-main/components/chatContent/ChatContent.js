@@ -87,7 +87,7 @@ const ChatContent = (props) => {
       <div className="content__header">
         <div className="blocks">
           <div className="current-chatting-user">
-            <Avatar isOnline="active" image={props.image} />
+            <Avatar isOnline="active" image={props.image} id="AvatarChat"/>
             <p>{props.username}</p>
           </div>
         </div>
@@ -102,10 +102,10 @@ const ChatContent = (props) => {
       </div>
       <div className="content__body scrollbar">
         <div className="chat__item">
-          <div className="flex flex-col">
-            {infos.messages.length > 0 ? (
-              infos.messages.map((itm, index) => {
-                return (
+          {infos.messages.length > 0 ? (
+            infos.messages.map((itm, index) => {
+              return (
+                <div className={itm.sourceName == user.credentials.username ? "test w-1/12" : "test2 w-1/12"}>
                   <ChatItem
                     animationDelay={index + 2}
                     key={index}
@@ -116,12 +116,12 @@ const ChatContent = (props) => {
                     msg={itm.body}
                     image={props.image}
                   />
-                );
-              })
-            ) : (
-              <div className="dummy_div" />
-            )}
-          </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className="dummy_div" />
+          )}
           <div ref={messagesEndRef} />
         </div>
       </div>

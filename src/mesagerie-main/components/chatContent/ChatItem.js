@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Avatar from "../chatList/Avatar";
 
 const ChatItem = (props) => {

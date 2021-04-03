@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 import image from "../../images/logo.png";
-export default class Avatar extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+const Avatar =(props)=> {
     return (
-      <div className="avatar">
+      <div className={props.id?"":"avatar"} id={props.id?props.id:""}>
         <div className="avatar-img">
-          <img src={image} alt="#" />
-          {/* <img src={this.props.image} alt="#" /> c'est ce qu'il y avait avant*/}
+          <img src={image} alt="#" id={props.id?props.id:""} />
+          {/* <img src={props.image} alt="#" /> c'est ce qu'il y avait avant*/}
         </div>
-        <span className={`isOnline ${this.props.isOnline}`}></span>
+        <span className={`isOnline ${props.isOnline}`}></span>
       </div>
     );
-  }
 }
+
+export default Avatar

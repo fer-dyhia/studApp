@@ -60,9 +60,17 @@
 .chatlist__item:first-child {
   margin-top: 0;
 }
+
+#AvatarChat {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
 
   margin-right: 20px;
@@ -86,7 +94,7 @@
 
   display: block;
 }
-.chatlist__item:hover{
+.chatlist__item:hover {
   background: rgb(240, 240, 255);
   border-radius: 10px;
 }
@@ -94,10 +102,9 @@
   background: rgb(240, 240, 255);
   border-left: solid rgb(75, 204, 165);
   border-radius: 10px;
-  border-top-left-radius: 0 ;
-  border-bottom-left-radius: 0 ;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
-
 
 .isOnline {
   position: absolute;
