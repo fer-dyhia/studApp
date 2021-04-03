@@ -40,10 +40,10 @@ const PeopleList = () => {
               {/* {online.username} */}
             </div>
           </div>
-          <button className="w-24 p-2 rounded-full text-white transition duration-500 ease-in-out bg-blue-500 hover:bg-blue-600 shadow-md">
+          <button className="w-24 p-2 rounded-full text-white transition duration-500 ease-in-out bg-blue-500 hover:bg-blue-600 shadow-md focus:outline-none">
             Add
           </button>
-          <button className="w-24 p-2 rounded-full text-black transition duration-500 ease-in-out bg-white hover:bg-gray-100 hover:text-gray-800 border-2 border-gray-500 shadow-md">
+          <button className="w-24 p-2 rounded-full text-black transition duration-500 ease-in-out bg-white hover:bg-gray-100 hover:text-gray-800 border-2 border-gray-500 shadow-md focus:outline-none">
             Add
           </button>
 
@@ -65,7 +65,7 @@ const PeopleList = () => {
               {/* {online.username} */}
             </div>
           </div>
-          <button className="w-16 p-2 rounded-xl text-white transition duration-500 ease-in-out bg-blue-500 hover:bg-blue-600">
+          <button className="w-16 p-2 rounded-xl text-white transition duration-500 ease-in-out bg-blue-500 hover:bg-blue-600 focus:outline-none">
             Add
           </button>
         </div>
@@ -86,7 +86,7 @@ const PeopleList = () => {
               {/* {online.username} */}
             </div>
           </div>
-          <button className="w-16 p-2 rounded-xl text-white transition duration-500 ease-in-out bg-blue-500 hover:bg-blue-600">
+          <button className="w-16 p-2 rounded-xl text-white transition duration-500 ease-in-out bg-blue-500 hover:bg-blue-600 focus:outline-none">
             Add
           </button>
         </div>

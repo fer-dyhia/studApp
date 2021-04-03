@@ -9,6 +9,9 @@ import {
   UploadImagePost,
 } from "../../../Redux/Actions/dataAction";
 import { ReadMsg } from "../../../Redux/Actions/dataAction";
+import ImgComponent from "./ImgComponent";
+import ImgSent from "./ImgSent";
+import CustomScroll from 'react-custom-scroll';
 
 const ChatContent = (props) => {
   const [Message, setMessage] = useState("");
@@ -100,12 +103,14 @@ const ChatContent = (props) => {
           </div>
         </div>
       </div>
-      <div className="content__body scrollbar">
+      <CustomScroll>
+      <div className="content__body ">
         <div className="chat__item">
           {infos.messages.length > 0 ? (
             infos.messages.map((itm, index) => {
               return (
                 <div className={itm.sourceName == user.credentials.username ? "test w-1/12" : "test2 w-1/12"}>
+                  
                   <ChatItem
                     animationDelay={index + 2}
                     key={index}
@@ -125,6 +130,8 @@ const ChatContent = (props) => {
           <div ref={messagesEndRef} />
         </div>
       </div>
+      <ImgComponent/>
+      </CustomScroll>
       <div className="content__footer">
         <div className="sendNewMessage">
           <button className="image">

@@ -14,7 +14,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <button
-          class="toggle-button"
+          class="toggle-button focus:outline-none"
           id="centered-toggle-button"
           onClick={e => {
             this.showModal(e);

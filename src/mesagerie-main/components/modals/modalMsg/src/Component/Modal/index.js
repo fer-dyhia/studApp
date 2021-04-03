@@ -33,7 +33,7 @@ const Modal = (props) => {
         {/* <PeopleList /> */}
         {props.children}
       </div>
-      <button className="w-60 h-14 p-2 text-xl rounded-full text-white transition duration-500 ease-in-out bg-blue-600 hover:bg-blue-400 shadow absolute bottom-5 left-28">
+      <button className="w-60 h-14 p-2 text-xl rounded-full text-white transition duration-500 ease-in-out bg-blue-600 hover:bg-blue-400 shadow absolute bottom-5 left-28 focus:outline-none">
         Send
       </button>
     </div>
