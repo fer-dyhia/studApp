@@ -93,7 +93,7 @@ const ChatContent = (props) => {
       <div className="content__header">
         <div className="blocks">
           <div className="current-chatting-user">
-            <Avatar isOnline="active" image={props.image} id="AvatarChat"/>
+            {props.username  ?<Avatar isOnline="active" image={props.image} id="AvatarChat"/>:null }
             <p>{props.username}</p>
           </div>
         </div>

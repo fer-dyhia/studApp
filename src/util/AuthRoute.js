@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import {
     FirebaseAuthConsumer,
     IfFirebaseAuthed,
@@ -16,18 +16,27 @@ const AuthRoute = ({component: Component ,...rest}) => {
     return(
         <FirebaseAuthConsumer>
             {({isSignedIn,user})=>{
-            
              return(<Route {...rest} render={(props) => {
-          
-           
-            
             if(isSignedIn|User.authenticated){
-                 if(user.emailVerified){
+                if(User.credentials.verified){
                     return <Component {...props} />
+                }else{
+                    
+                    if(user){
+                        if(user.emailVerified){
+                        return <Component {...props} />
+    
+                         }else {
+                          return <NotVerification/>
+                        }
+                    }
+                     else {
+                          return <NotVerification/>
+                     }
+                    
 
-                 }else {
-                      return <NotVerification/>
-                 }
+                }
+                
                
 
             }else{

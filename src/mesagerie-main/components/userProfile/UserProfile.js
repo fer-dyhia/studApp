@@ -47,7 +47,7 @@ const UserProfile = (props) => {
           id="headerProfile"
           className="flex flex-col items-center w-8 ml-6 mb-4 mt-1 mr-6  button_avatar rounded-full bg-gray-50"
         >
-          <img src={props.image} className=" w-24 h-24 rounded-full " />
+         {props.image ?<img src={props.image} className=" w-24 h-24 rounded-full " />:null }
         </div>
         <h4 className="text-base w-full text-center font-semibold text-gray-600">
           {props.username}

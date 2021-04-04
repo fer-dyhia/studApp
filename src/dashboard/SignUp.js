@@ -35,7 +35,9 @@ const SignUp = ({ submitForm }) => {
         }
         const errors = validation(user);
         setErrors(errors)
+        console.log(errors)
         if(Object.keys(errors).length === 0){
+            console.log("yes")
             signUpUser(user, history, dispatch)
 
 
@@ -133,7 +135,7 @@ const SignUp = ({ submitForm }) => {
                                             setUsername(e.target.value)
                                         }}
                                     />
-                                    {Errors.email && <p className='text-red-500'>{Errors.email}</p>}
+                                    {Errors.pseudo && <p className='text-red-500'>{Errors.pseudo}</p>}
                                 </div>
                             </div>
                             <div className='grid grid-cols-2 gap-4'>

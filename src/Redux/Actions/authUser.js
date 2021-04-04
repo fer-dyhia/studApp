@@ -47,6 +47,7 @@ export const LoginWithGoogle = () => {
                         bio: null,
                         website: null,
                         location: user.hometown,
+                        verified:user.emailVerified,
                     }
                     if (snapshot.size > 0) {
                         snapshot.forEach((doc) => {
@@ -78,7 +79,6 @@ export const signUpUser = (userData, history, dispatch) => {
           .get()
           .then((user) => {
             if (user.exists) {
-                
               
             } else {
               return fire.auth()
@@ -88,7 +88,7 @@ export const signUpUser = (userData, history, dispatch) => {
                     // data.sendEmailVerification()
                     // .auth().sendPasswordResetEmail(email)
                     const newUser = {
-                      FirstName: userData.firstname,
+                      FirstName: userData.firstname,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                       LastName: userData.lastname,
                       creatAt: new Date().toISOString(),
                       Email: userData.email,
@@ -98,6 +98,13 @@ export const signUpUser = (userData, history, dispatch) => {
                       //displayName: userData.displayName,
                       username: userData.username,
                     };
+                    var user = fire.auth().currentUser;
+
+                    user.sendEmailVerification().then(function() {
+                      console.log('emailSend')
+                    }).catch(function(error) {
+                      console.log(error)
+                    });
                     fire.firestore().collection("Users").doc(userData.username).set(newUser);
                   }).then((res) => {
                     dispatch({ type: CLEAR_ERRORS })
@@ -122,6 +129,8 @@ export const signUpUser = (userData, history, dispatch) => {
         })
 }
 
+
+
 export const loginUser = (userData, history, dispatch) => {
     fire.auth()
         .signInWithEmailAndPassword(userData.email, userData.password)
@@ -141,6 +150,7 @@ export const loginUser = (userData, history, dispatch) => {
                 })
 
             const uid = { uid: data.user.uid }
+            const verified= data.user.emailVerified
             console.log(uid)
             dispatch({ type: LOADING_USER })
             axios
@@ -148,7 +158,7 @@ export const loginUser = (userData, history, dispatch) => {
                 .then((res) => {
                     console.log('yes')
                     const User = res.data
-                    console.log(User)
+                    User.verified=verified
                     dispatch({
                         type: SET_USER,
                         payload: User,

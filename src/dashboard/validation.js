@@ -8,7 +8,7 @@ export default function validation(values) {
     if (!values.lastname) {
         errors.lastN = 'Prénom required'
     }
-    if (!values.pseudo) {
+    if (!values.username) {
         errors.pseudo = 'pseudo required'
     }
 
@@ -27,7 +27,7 @@ export default function validation(values) {
     if (!values.confirmPassword) {
         errors.confirmPassword = 'password required'
     } else if (values.confirmPassword !== values.password) {
-        errors.password = 'mot de passe pas compatible '
+        errors.password2 = 'mot de passe pas compatible '
     }
 
     return errors
