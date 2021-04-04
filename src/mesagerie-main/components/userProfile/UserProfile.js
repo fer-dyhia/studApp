@@ -31,8 +31,9 @@ const UserProfile = (props) => {
         >
           <img src={props.image} className=" w-24 h-24 rounded-full " />
         </div>
-        <h4 className="text-base w-full text-center font-semibold text-gray-600">{props.username}</h4>
-        
+        <h4 className="text-base w-full text-center font-semibold text-gray-600">
+          {props.username}
+        </h4>
         <p>CEO & Founder at Highly Inc</p>
       </div>
       <span className="overflow-y-scroll h-96 scrollbar">
