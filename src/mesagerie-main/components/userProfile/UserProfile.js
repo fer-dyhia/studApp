@@ -36,7 +36,7 @@ const UserProfile = (props) => {
         </h4>
         <p>CEO & Founder at Highly Inc</p>
       </div>
-      <span className="overflow-y-scroll h-96 scrollbar">
+      <span className="overflow-y-scroll h-96 no-scrollbar">
         <div className="profile__card">
           <div className="bio no-scrollbar break-words">
             fjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjsk
