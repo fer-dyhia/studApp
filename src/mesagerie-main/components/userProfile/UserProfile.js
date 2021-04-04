@@ -27,10 +27,11 @@ const UserProfile = (props) => {
   return (
     <div className="main__userprofile">
       <div className="profile__card user__profile__image">
-        <div onMouseMove={(e)=>onMouse(e)} id="headerProfile" className="flex flex-col items-center w-8 ml-12 mb-4 mt-1 mr-6  button_avatar rounded-full bg-gray-50">
-        <img src={userData.credentials.imageUrl} className=" w-24 h-24 rounded-full " />
-        <p className="text-base font-semibold text-gray-600">{userData.credentials.username}</p></div>
-        <h4>{props.username}</h4>
+        <div onMouseMove={(e)=>onMouse(e)} id="headerProfile" className="flex  justify-items-center  w-8 ml-8 mb-2 mt-1 mr-6 z-50 button_avatar rounded-full bg-gray-50">
+        <img src={props.image} className="rounded-full   object-cover  " />
+        </div>
+        <p className="text-base font-semibold text-gray-600">{props.username}</p>
+        {/* <h4>{props.username}</h4> */}
         <p>CEO & Founder at Highly Inc</p>
       </div>
       <div className="profile__card">

@@ -40,7 +40,7 @@ const ChatList = (props) => {
   return (
     <div className="main__chatlist">
       <div onMouseMove={(e)=>onMouse(e)}  className="flex flex-col items-center ml-12 mb-4 mt-1  button_avatar rounded-full bg-gray-50">
-        <img src={userData.credentials.imageUrl} className=" w-28 h-28 rounded-full " />
+        <img src={userData.credentials.imageUrl} className=" w-28 h-28 rounded-full object-cover " />
         <p className="text-base font-semibold text-gray-600">{userData.credentials.username}</p>
       </div>
       
