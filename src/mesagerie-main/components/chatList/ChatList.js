@@ -39,11 +39,12 @@ const ChatList = (props) => {
   const userData = useSelector((state) => state.user);
   return (
     <div className="main__chatlist">
-      <div onMouseMove={(e)=>onMouse(e)}  className="flex flex-col items-center ml-12 mb-4 mt-1  button_avatar rounded-full bg-gray-50">
+      <span className="mb-3 flex flex-col items-center">
+      <div onMouseMove={(e)=>onMouse(e)}  className="flex flex-col items-center mb-2 mt-1 button_avatar rounded-full bg-gray-50">
         <img src={userData.credentials.imageUrl} className=" w-28 h-28 rounded-full " />
-        <p className="text-base font-semibold text-gray-600">{userData.credentials.username}</p>
       </div>
-      
+      <p className="text-base w-full text-center font-semibold text-gray-600">{userData.credentials.username}</p>
+      </span>
       
       <div className="flex justify-between flex-row">
         <div className="chatlist__heading">
@@ -53,12 +54,12 @@ const ChatList = (props) => {
             <i className="fa fa-ellipsis-h"></i>
           </button> */}
         </div>
-        <button onClick={(e) => showModal(e)} className="p-2 rounded-lg text-white transition duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 focus:outline-none">New Message</button>
+        <button onClick={(e) => showModal(e)} className="p-1.5 rounded-lg text-white transition duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 focus:outline-none">New Message</button>
         <Modal user={Selected} show={show} onClose={showModal}>
           <PeopleList select={selectUser}/>
         </Modal>
       </div>
-      <div className="chatlist__items">
+      <div className="chatlist__items no-scrollbar scrollbar">
         {infos.conversations.map((item, i) => {
           const index = item.Users.findIndex(
             (User) => User == userData.credentials.username

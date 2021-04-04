@@ -4,22 +4,22 @@
 @layer utilities {
     
   .button_avatar {
-    --x: 50%;
+    --x: 45%;
     --y: 50%;
     /* appearance: none;
     color: white;
     cursor: pointer;
     outline: none;
     border-radius:9999px; */
-    width:140px;
+    width:115px;
     
     
     
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     background: linear-gradient(#fff, #fff) padding-box, radial-gradient(farthest-corner at var(--x) var(--y), #00C9A7, #845EC2) border-box;
   }
   #headerProfile{
-    width:130px!important;
+    width:100px!important;
   }
       
   };

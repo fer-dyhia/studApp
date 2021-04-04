@@ -21,7 +21,7 @@
 }
 
 .chatlist__items {
-  margin-top: 30px;
+  margin-top: 17px;
   overflow: auto;
   width: 270px;
   max-height: calc(100vh - calc(100vh / 2));
