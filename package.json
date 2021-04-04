@@ -72,7 +72,6 @@
       "last 1 safari version"
     ]
   },
-  
   "devDependencies": {
     "@babel/plugin-syntax-class-properties": "^7.12.13",
     "@tailwindcss/postcss7-compat": "^2.0.3",

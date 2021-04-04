@@ -16,13 +16,13 @@ export default function Post() {
             <Post1 />
 
             <div className='grid grid-col-3 md:grid-cols-5 pt-20 pl-12 pr-12 h-screen'>
-                <div className='bg-gray-50 border-r-2 border-gray-300 h-0 md:h-auto md:w-full col-span-0 invisible md:visible'>
+                <div className=' h-0 md:h-auto md:w-full shadow-inner col-span-0 invisible md:visible'>
                     <Post2 />
                 </div>
-                <div className='col-span-1 md:col-span-3 bg-gray-50'>
+                <div className='col-span-1 md:col-span-3 bg-white shadow-2xl'>
                     <Post3 />
                 </div>
-                <div className='bg-gray-50 border-l-2 border-gray-300 h-0 md:h-auto md:w-full invisible md:visible '>
+                <div className=' h-0 md:h-auto md:w-full shadow-inner invisible md:visible '>
                     <Post4 />
                 </div>
             </div>

@@ -30,7 +30,7 @@ const decline=(request) => {
   
     return(
  
-     <div className="rounded-lg min-h-screen space-y-8 bg-green-500 ml-96 mt-14 mr-10 max-w-3xl flex flex-col">
+     <div className="rounded-lg min-h-screen space-y-8 bg-gradient-to-t from-green-200 via-gray-50 to-blue-100 ml-96 mt-14 mr-10 max-w-3xl flex flex-col">
          
       {infos.invitations!=[]?infos.invitations.map((request) => {
         return(<div className="justify-center ml-8 mr-8 mt-8 bg-white rounded-full border-b-4 flex items-center px-2 py-3">

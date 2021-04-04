@@ -21,7 +21,10 @@ import EditProfil from './profilUser/components/Editprofil'
 import friends from './profilUser/components/friend'
 import AuthRoute from "./util/AuthRoute"
 import ChatBody from "./mesagerie-main/components/chatBody/ChatBody"
-
+import Page from "./page/pageAdmin"
+import offre from "./offre/offre"
+import event from "./event/event"
+import club from "./club/club" 
 const config = require('./config')
 
 //redux
@@ -36,7 +39,10 @@ const App = () => {
                         <Route path='/signin' component={Signin} />
                         <Route path='/signup' component={Signup} />
                         <AuthRoute path='/filActualite' component={filActualite} />
-                        <AuthRoute path='/iterfaceUser' component={iterfaceUser} />
+                        <AuthRoute path='/page' component={Page} />
+                        <AuthRoute path='/offre' component={offre} />
+                        <AuthRoute path='/event' component={event} />
+                        <AuthRoute path='/club' component={club} />
                         <AuthRoute path='/messagerie' component={ChatBody} />
                         <AuthRoute path='/profilUser/:username' component={profilUser} />
                         <AuthRoute path='/forgotPass' component={ForgotPass} />

@@ -73,9 +73,9 @@ export default function Post3() {
                             <BsCamera className='text-gray-900 h-8 w-8 cursor-pointer transform hover:-translate-y-1 hover:scale-110'/>
                             <input onChange={onUpload} type='file'accept="image/png, image/jpeg"  className='hidden '/>
                         </label>
-                        <label>
+                        {/* <label>
                         <BiCool className='text-yellow-500 h-8 w-8 cursor-pointer transform hover:-translate-y-1 hover:scale-110'/>
-                         </label>
+                         </label> */}
 
                  </div>
                     <div className=' flex flex-col items-center border-t-2 focus:outline-none'>

@@ -5,6 +5,8 @@ import { sendRequest } from '../Redux/Actions/userActions'
 import { getOnlineUsers } from '../Redux/Actions/userActions'
 import { getSuggestedUsers } from '../Redux/Actions/dataAction'
 import PersonAddSharpIcon from '@material-ui/icons/PersonAddSharp'
+import  AmiEnligne from './amiEnLigne'
+import  Suggestion from './suggestion'
 
 export default function Post4() {
     const infos = useSelector((state) => state.infos)
@@ -31,7 +33,8 @@ export default function Post4() {
     return (
         <div className='h-full w-full rounded-lg'>
         {/* début partie en ligne */}
-        <div className=' pb-2'>
+        <AmiEnligne/> 
+        {/* <div className=' pb-2'>
                     <p className='  flex text-right p-4  border-r-4  font-semibold text-sm text-gray-800 flex-auto '>
                         Amis en ligne
                         <ensSharpIcon  className=' text-green-800 ' size={15} /></p>
@@ -53,10 +56,12 @@ export default function Post4() {
                         </div>
                     </div>)
                     }):null}
-         </div>
+         </div> */}
          {/* fin partie amies en ligne  */}
          {/* début partie suggestion  */}
-    <div>                  
+         <Suggestion/>
+
+    {/* <div>                  
         <div  className=' flex relative  '>
             <h1 className='border-r-4 p-4  font-semibold text-sm text-gray-800 flex-auto my-1'>
                 Vous connaissez peut être ?</h1>
@@ -88,7 +93,7 @@ export default function Post4() {
                  :null}
             </div>
         </div>
-    </div>
+    </div> */}
     {/* fin partie suggetion  */}
 </div>
 

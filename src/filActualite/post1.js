@@ -83,34 +83,26 @@ export default function Post1() {
                 
                     <div className=' flex items-center w-9/12'>
                         <div className='w-0 md:w-1/5 pl-0 md:pl-2 pt-0 md:pt-2  invisible md:visible  cursor-pointer '>
+                        <Link to='/filActualite' >
                                 <img src={logo} alt='logo'/>
+                        </Link>
                         </div>
                         <div className='md:w-0 w-1/5 md:pl-0 pl-1 md:pt-0 pt-0 md:h-0 visible md:invisible cursor-pointer  '>
+                        <Link to='/filActualite' >
                                 <img src={logor} alt='logo'/>
+                                </Link>
                         </div>
             
                                 <div className='flex flex-col ml-4'> 
                                   <div><CustomSearchBox /></div>
                                <div className='flex justify-center'><CustomHits /></div>  
                                  </div>
-                                
-                                 
-                                   
-                                   
-       
-                                
-                                
-                                
-                  
                     </div>
                     </InstantSearch>
-                    
-                    
-                   
 
                     <div className=' flex flex-row space-x-3 justify-center items-center text-gray-100   '>
                         <div className= 'visible md:invisible '>
-                            <Link to='/pages'>
+                            <Link to='/page'>
                                 <MdPages className=' text-gray-100 h-6 w-6 transform hover:-translate-y-1 hover:scale-110 focus:outline-none' />
                             </Link>
                         </div>

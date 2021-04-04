@@ -69,12 +69,12 @@ const SignUp = ({ submitForm }) => {
                                     <span>Google</span>
                                 </button>
                             </div>
-                            <div className='bg-white flex space-x-4 text-blue-800 justify-center items-center border  border-white p-2 rounded-lg'>
+                            {/* <div className='bg-white flex space-x-4 text-blue-800 justify-center items-center border  border-white p-2 rounded-lg'>
                                 <FaFacebook size={20} />
                                 <button className='text-gray-900 focus:outline-none font-mono text-xl  '>
                                     <span>Facebook</span>
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <form>

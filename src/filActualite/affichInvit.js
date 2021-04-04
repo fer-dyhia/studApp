@@ -46,7 +46,7 @@ export default function AffichInvit() {
            </button>
 
            {open ? (
-               <div className='  origin-top-right absolute right-5 mt-2 w-auto py-1 ring-1 ring-black ring-opacity-5 bg-white shadow-lg rounded-lg'>
+               <div className='  origin-top-right absolute right-20 mt-2 w-auto py-1 ring-1 ring-black ring-opacity-5 bg-white shadow-lg rounded-lg'>
                <div className=' flex flex-col '>
                <div className='grid grid-cols-1  '>
                   

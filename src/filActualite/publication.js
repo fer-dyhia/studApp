@@ -28,7 +28,7 @@ dayjs.extend(relativeTime)
 const useStyles = makeStyles((theme) => ({
   root: {
   
-    marginBottom: '2%',
+    marginBottom: '4%',
       },
     media: {
       height: 0,
