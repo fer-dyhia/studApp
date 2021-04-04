@@ -92,7 +92,7 @@ export const signUpUser = (userData, history, dispatch) => {
                       LastName: userData.lastname,
                       creatAt: new Date().toISOString(),
                       Email: userData.email,
-                      imageUrl: "https://firebasestorage.googleapis.com/v0/b/studup-dc5db.appspot.com/o/profile.png?alt=media&token=51a55cfd-bc1f-4a07-bc7d-cfc230334cd3",
+                      imageUrl: "https://firebasestorage.googleapis.com/v0/b/socialapp-c6ffe.appspot.com/o/logo.png?alt=media&token=9bb46ea0-aa82-4268-98e1-1966118315a0",
                       isonline: false,
                       uid: userId,
                       //displayName: userData.displayName,

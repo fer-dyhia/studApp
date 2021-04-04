@@ -24,9 +24,9 @@ export default function validation(values) {
         errors.password = 'mot de passe besoin de 6 caracteres ou plus'
     }
 
-    if (!values.password2) {
-        errors.password2 = 'password required'
-    } else if (values.password2 !== values.password) {
+    if (!values.confirmPassword) {
+        errors.confirmPassword = 'password required'
+    } else if (values.confirmPassword !== values.password) {
         errors.password = 'mot de passe pas compatible '
     }
 

@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 
 const SignUp = ({ submitForm }) => {
-    const [Errors,setErrors]=useState([])
+    const [Errors,setErrors]=useState({})
     const [firstname, setFirstName] = useState('')
     const [lastname, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -35,7 +35,7 @@ const SignUp = ({ submitForm }) => {
         }
         const errors = validation(user);
         setErrors(errors)
-        if(errors.length<0){
+        if(Object.keys(errors).length === 0){
             signUpUser(user, history, dispatch)
 
 
