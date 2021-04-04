@@ -1,11 +1,11 @@
 export default function validation(values) {
     let errors = {}
 
-    if (!values.firstN.trim()) {
+    if (!values.firstname.trim()) {
         errors.firstN = 'Nom required'
     }
 
-    if (!values.lastN) {
+    if (!values.lastname) {
         errors.lastN = 'Prénom required'
     }
     if (!values.pseudo) {

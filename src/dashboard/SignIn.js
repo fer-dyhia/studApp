@@ -15,16 +15,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
 export default function Signin({ loginForm }) {
-    const { errors } = useSignIn(loginForm, validation2)
-
+    const [Errors,setErrors]=useState([])
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [currentUser, setCurrentUser] = useState(null)
-
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector((state)=>state.user)
-
     const onSubmit = (e) => {
         e.preventDefault()
         const user = {
@@ -32,7 +29,11 @@ export default function Signin({ loginForm }) {
             password: password,
         }
         const errors = validation2(user)
-          loginUser(user, history, dispatch) 
+        setErrors(errors)
+        if(errors.length<0){
+            loginUser(user, history, dispatch) 
+        }
+          
     }
 
     const signGoogle = (e) => {
@@ -76,7 +77,7 @@ export default function Signin({ loginForm }) {
                                     setEmail(e.target.value)
                                 }}
                             />
-                            {errors.email && <p className='text-red-500'>{errors.email}</p>}
+                            {Errors.email && <p className='text-red-500'>{Errors.email}</p>}
                         </div>
                         <div className='p-4'>
                             <input
@@ -89,7 +90,7 @@ export default function Signin({ loginForm }) {
                                     setPassword(e.target.value)
                                 }}
                             />
-                            {errors.password && <p className='text-red-500'>{errors.password}</p>}
+                            {Errors.password && <p className='text-red-500'>{Errors.password}</p>}
                         </div>
 
                         <div className='focus:outline-none flex justify-start items-start p-2 text-blue-500 font-sans text-lg hover:underline hover:text-blue-500'>

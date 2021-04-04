@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 
 const SignUp = ({ submitForm }) => {
-    const { errors } = useSignUp(submitForm, validation)
+    const [Errors,setErrors]=useState([])
     const [firstname, setFirstName] = useState('')
     const [lastname, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -33,8 +33,16 @@ const SignUp = ({ submitForm }) => {
             password: password,
             confirmPassword: confirmPassword,
         }
+        const errors = validation(user);
+        setErrors(errors)
+        if(errors.length<0){
+            signUpUser(user, history, dispatch)
 
-        signUpUser(user, history, dispatch)
+
+        }
+
+
+        
     }
 
     return (
@@ -83,7 +91,7 @@ const SignUp = ({ submitForm }) => {
                                             setFirstName(e.target.value)
                                         }}
                                     />
-                                    {errors.firstN && <p className='text-red-500'>{errors.firstN}</p>}
+                                    {Errors.firstN && <p className='text-red-500'>{Errors.firstN}</p>}
                                 </div>
 
                                 <div className='p-2'>
@@ -97,7 +105,7 @@ const SignUp = ({ submitForm }) => {
                                             setLastName(e.target.value)
                                         }}
                                     />
-                                    {errors.lastN && <p className='text-red-500'>{errors.lastN}</p>}
+                                    {Errors.lastN && <p className='text-red-500'>{Errors.lastN}</p>}
                                 </div>
                             </div>
                             <div className='grid grid-cols-2 gap-4'>
@@ -112,7 +120,7 @@ const SignUp = ({ submitForm }) => {
                                             setEmail(e.target.value)
                                         }}
                                     />
-                                    {errors.email && <p className='text-red-500'>{errors.email}</p>}
+                                    {Errors.email && <p className='text-red-500'>{Errors.email}</p>}
                                 </div>
                                 <div className='p-2'>
                                     <input
@@ -125,7 +133,7 @@ const SignUp = ({ submitForm }) => {
                                             setUsername(e.target.value)
                                         }}
                                     />
-                                    {errors.email && <p className='text-red-500'>{errors.email}</p>}
+                                    {Errors.email && <p className='text-red-500'>{Errors.email}</p>}
                                 </div>
                             </div>
                             <div className='grid grid-cols-2 gap-4'>
@@ -140,7 +148,7 @@ const SignUp = ({ submitForm }) => {
                                             setPassword(e.target.value)
                                         }}
                                     />
-                                    {errors.password && <p className='text-red-500'>{errors.password}</p>}
+                                    {Errors.password && <p className='text-red-500'>{Errors.password}</p>}
                                 </div>
                                 <div className='p-2'>
                                     <input
@@ -153,7 +161,7 @@ const SignUp = ({ submitForm }) => {
                                             setConfirmPassword(e.target.value)
                                         }}
                                     />
-                                    {errors.password2 && <p className='text-red-500'>{errors.password2}</p>}
+                                    {Errors.password2 && <p className='text-red-500'>{Errors.password2}</p>}
                                 </div>
                             </div>
                         </div>

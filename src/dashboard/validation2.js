@@ -2,11 +2,7 @@ import { Details } from '@material-ui/icons'
 
 export default function validation2(details) {
     let errors = {}
-
-    if (!details.pseudo) {
-        errors.pseudo = 'pseudo required'
-    }
-
+    
     if (!details.email) {
         errors.email = 'email required'
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(details.email)) {
