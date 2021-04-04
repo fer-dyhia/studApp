@@ -45,8 +45,9 @@ const UserProfile = (props) => {
         </div>
         <div className="profile__card">
           <div className="bio no-scrollbar break-words">
-            fjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjsk
-            fjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskf
+            <p className="text-gray-500">Phone : <span className="text-black">06</span></p>
+            <p className="text-gray-500">Email : <span className="text-black">J@J</span></p>
+            <p className="text-gray-500">Date de Naissance : <span className="text-black">6/6/6</span></p>
           </div>
         </div>
         <div className="profile__card">
