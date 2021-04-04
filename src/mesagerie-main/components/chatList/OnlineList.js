@@ -20,7 +20,7 @@ const OnlineList = (props) => {
     return () => clearInterval(interval);
   }, []);
 
-  const searchConv = (username) => {
+  const searchConv = (username,imageUrl) => {
     const conv1 = [username, user.credentials.username].join(" ");
     const conv2 = [user.credentials.username, username].join(" ");
     //   console.log(conv1)
@@ -35,6 +35,7 @@ const OnlineList = (props) => {
           username: username,
         };
         props.setConv(convInfo);
+        props.click({name:infos.conversations[index].convId,img:imageUrl})
       } else {
         props.click({ name: "", img: {} });
       }
@@ -42,8 +43,8 @@ const OnlineList = (props) => {
   };
 
   return (
-    <div class="main__chatlist container flex mx-auto w-full items-start justify-center">
-      <ul class="flex flex-col mt-7 bg-white p-4">
+    <div class="main__chatlist container flex mx-auto bg-gray-50 w-full items-start justify-center">
+      <ul class="flex flex-col mt-7  p-4">
         <h2 className="flex-row mb-10 font-semibold hover:text-gray-500 transition duration-500 ease-in-out">
           Amis en Ligne
         </h2>
@@ -53,14 +54,14 @@ const OnlineList = (props) => {
                 return (
                   <li
                     class="border-gray-400 flex flex-row mb-2"
-                    onClick={() => searchConv(online.username)}
+                    onClick={() => searchConv(online.username,online.imageUrl)}
                   >
                     <div class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-                      <div class="flex flex-col rounded-full w-12 h-10 bg-gray-200 justify-center items-center mr-4">
+                      <div class="flex flex-col rounded-full w-10 h-10 bg-gray-200 justify-center items-center mr-4">
                         <img
                           className="rounded-full h-16 w-16"
                         //   src={online.imageUrl}
-                        src={logo}
+                        src={online.imageUrl}
                           alt=""
                         />
                       </div>
@@ -69,7 +70,9 @@ const OnlineList = (props) => {
                           {" "}
                           {online.username}
                         </div>
+                        
                       </div>
+                     
                     </div>
                   </li>
                 );

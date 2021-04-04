@@ -1,14 +1,32 @@
-import React, { Component } from "react";
-import { useSelector } from "react-redux";
+import React, {useState, useEffect } from "react";
+import axios from "axios"
+import { useSelector,useDispatch } from "react-redux";
 import "./userProfile.css";
 import logo from "../../images/logo.png";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import ImageGallery from "./ImageGallery";
+import userEvent from "@testing-library/user-event";
+
+
 
 const UserProfile = (props) => {
+  //const dispatch=useDispatch()
   const userData = useSelector((state) => state.user);
+  const [info,setInfo]=useState({})
+
+  useEffect(() => {  
+    let user ={username:props.username} 
+    console.log(user)
+    axios.post("https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/data/convUserInfo",user).then((res) => {
+      setInfo(res.data)
+      console.log(info)
+    })
+}
+    ,[props.username])
+
+
   const toggleInfo = (e) => {
     e.target.parentNode.classList.toggle("open");
   };
@@ -34,20 +52,19 @@ const UserProfile = (props) => {
         <h4 className="text-base w-full text-center font-semibold text-gray-600">
           {props.username}
         </h4>
-        <p>CEO & Founder at Highly Inc</p>
+        <p>Etudiant</p>
       </div>
       <span className="overflow-y-scroll h-96 no-scrollbar">
-        <div className="profile__card">
+        {info.bio ?<div className="profile__card">
           <div className="bio no-scrollbar break-words">
-            fjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjsk
-            fjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskfjkfjskf
+           {info.bio}
           </div>
-        </div>
+        </div>:null}
         <div className="profile__card">
           <div className="bio no-scrollbar break-words">
-            <p className="text-gray-500">Phone : <span className="text-black">06</span></p>
-            <p className="text-gray-500">Email : <span className="text-black">J@J</span></p>
-            <p className="text-gray-500">Date de Naissance : <span className="text-black">6/6/6</span></p>
+           <p className="text-gray-500">Email : <span className="text-black">{info.Email?info.Email:"Non renseigné "}</span></p>
+            <p className="text-gray-500">Phone : <span className="text-black">{info.tel ?info.tel:"Non renseigné "}</span></p>
+            <p className="text-gray-500">Université : <span className="text-black">{info.univ?info.univ:"Non renseigné" }</span></p>
           </div>
         </div>
         <div className="profile__card">

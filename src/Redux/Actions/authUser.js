@@ -144,7 +144,7 @@ export const loginUser = (userData, history, dispatch) => {
             console.log(uid)
             dispatch({ type: LOADING_USER })
             axios
-                .post('/data/getAuthenticatedUser', uid)
+                .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/data/getAuthenticatedUser', uid)
                 .then((res) => {
                     console.log('yes')
                     const User = res.data
@@ -208,7 +208,7 @@ export const loginUser = (userData, history, dispatch) => {
 export const forgotPassword = (userData, history, dispatch) => {
     dispatch({ type: FORGOT_PASSWORD })
     axios
-        .post('/users/forgotPassword', userData)
+        .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/forgotPassword', userData)
         .then((res) => {
             console.log('yes')
             dispatch({ type: CLEAR_ERRORS })
@@ -223,7 +223,7 @@ export const forgotPassword = (userData, history, dispatch) => {
 }
 export const GetAuthUser=(dispatch,uid)=>{
     axios
-         .post('/data/getAuthenticatedUser', uid)
+         .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/data/getAuthenticatedUser', uid)
                 .then((res) => {
                     console.log('yes')
                     const User = res.data
@@ -237,7 +237,7 @@ export const GetAuthUser=(dispatch,uid)=>{
 
 }
 export const updateProfile=(dispatch,history,username,profileDate) => {
-    axios.post(`/users/updateProfile/${username}`,profileDate).then((res) => {
+    axios.post(`https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/updateProfile/${username}`,profileDate).then((res) => {
         history.push({
             pathname: `/profilUser/${username}`,
             state: { username: username }

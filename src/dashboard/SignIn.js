@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
 export default function Signin({ loginForm }) {
-    const [Errors,setErrors]=useState([])
+    const [Errors,setErrors]=useState({})
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [currentUser, setCurrentUser] = useState(null)
@@ -30,7 +30,8 @@ export default function Signin({ loginForm }) {
         }
         const errors = validation2(user)
         setErrors(errors)
-        if(errors.length<0){
+        console.log(Errors)
+        if (Object.keys(errors).length === 0){
             loginUser(user, history, dispatch) 
         }
           

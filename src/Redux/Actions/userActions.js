@@ -21,7 +21,7 @@ export const sendRequest = (dispatch, req) => {
         owner: req.owner,
         destination: req.destination,
     }
-    axios.post('/users/FollowUser', request).then((res) => {
+    axios.post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/FollowUser', request).then((res) => {
         dispatch({ type: SEND_FOLLOW_REQUEST, payload: req.destination })
     })
 }
@@ -34,7 +34,7 @@ export const acceptRequest = (dispatch, req) => {
     }
     console.log(req.Owner)
     axios
-        .post('/users/acceptFollowRequest', request)
+        .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/acceptFollowRequest', request)
         .then(() => {
             dispatch({ type: ACCEPT_FOLLOW_REQUEST, payload: request.Owner })
         })
@@ -49,7 +49,7 @@ export const declineRequest = (dispatch, req) => {
     }
     console.log(request)
     axios
-        .post('/users/declineFollowRequest', request)
+        .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/declineFollowRequest', request)
         .then(() => {
             dispatch({ type: DECLINE_REQUEST })
         })
@@ -61,7 +61,7 @@ export const declineRequest = (dispatch, req) => {
 export const getFollowRequest = (dispatch, user) => {
     const username = { username: user }
     axios
-        .post('/users/getFollowRequests', username)
+        .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/getFollowRequests', username)
         .then((res) => {
             dispatch({ type: SET_FOLLOW_REQUESTS, payload: res.data })
         })
@@ -72,7 +72,7 @@ export const getFollowRequest = (dispatch, user) => {
 
 export const getOnlineUsers = (dispatch, user) => {
     axios
-        .post('/users/getOnlineUsers', user)
+        .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/getOnlineUsers', user)
         .then((res) => {
             dispatch({ type: SET_ONLINE_USERS, payload: res.data })
         })
@@ -83,7 +83,7 @@ export const getOnlineUsers = (dispatch, user) => {
 }
 
 export const getFollowers = (dispatch, user) => {
-    axios.post('/users/getfollowers', user).then((res) => {
+    axios.post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/getfollowers', user).then((res) => {
         dispatch({ type: SET_FOLLOWERS, payload: res.data })
     })
 }
@@ -100,7 +100,7 @@ export const getNotifications=(dispatch,user) => {
 }
 export const markNotificationsRead = (dispatch,info)=>{
     axios
-      .post('/users/markNotificationsRead',info)
+      .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/markNotificationsRead',info)
       .then(() => {
           console.log("yess")
         dispatch({

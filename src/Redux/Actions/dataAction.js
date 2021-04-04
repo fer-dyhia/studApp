@@ -10,7 +10,7 @@ const { fire } = require("../../init");
 export const UploadImagePost = (dispatch, image) => {
     dispatch({ type: UPLOADING_IMAGE })
     axios
-        .post('/uploadImage', image)
+        .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/uploadImage', image)
         .then((res) => {
             console.log(res.data)
             dispatch({ type: UPLOADING_IMAGE_SUCESS, payload: res.data })
@@ -29,7 +29,7 @@ export const DeleteImagePost = (dispatch) => {
 
 export const getSuggestedUsers = (dispatch, user) => {
     console.log('test')
-    axios.post('/users/getSuggestedUsers', user).then((res) => {
+    axios.post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/getSuggestedUsers', user).then((res) => {
         console.log(res.data)
         dispatch({ type: SUGGEST_USERS, payload: res.data })
     })
@@ -37,7 +37,7 @@ export const getSuggestedUsers = (dispatch, user) => {
 
 export const getUserDetails = (dispatch, username) => {
     console.log(username.username)
-    axios.get(`/users/getUserDetails/${username.username}`).then((res) => {
+    axios.get(`https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/getUserDetails/${username.username}`).then((res) => {
         console.log("yess")
         dispatch({ type: SET_SELECTED_USER, payload: res.data })
     })
@@ -85,7 +85,7 @@ export const getRealtimeMessages = (dispatch, userId) => {
   
   export const MessageUser = (dispatch, Message) => {
     axios
-      .post("/users/MessageUser", Message)
+      .post("https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/MessageUser", Message)
       .then((res) => {
         dispatch({ type: MESSAGE_UPDATE });
       })
@@ -97,7 +97,7 @@ export const getRealtimeMessages = (dispatch, userId) => {
   export const ReadMsg = (dispatch, convId) => {
     console.log("yes");
     axios
-      .post("/users/ReadMsg", convId)
+      .post("https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/ReadMsg", convId)
       .then(() => {
         dispatch({ type: CLEAR_ERRORS });
       })
@@ -107,7 +107,7 @@ export const getRealtimeMessages = (dispatch, userId) => {
   };
 
   export const SendMessage=(dispatch,conv) => {
-      axios.post("/users/sendMessage",conv).then(() => {
+      axios.post("https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/users/sendMessage",conv).then(() => {
         console.log("uess")
           dispatch({type:MESSAGE_UPDATE})
       }).catch((e) => {
@@ -116,7 +116,7 @@ export const getRealtimeMessages = (dispatch, userId) => {
   }
 
   export const updateProfileImage=(history,username,image)=>{
-      axios.post(`/uploadProfileImage/${username}`,image).then((res) => {
+      axios.post(`https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/uploadProfileImage/${username}`,image).then((res) => {
         history.push({
             pathname: `/profilUser/${username}`,
             state: { username: username }

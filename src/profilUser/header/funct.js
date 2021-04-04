@@ -10,7 +10,7 @@ const Funct = (props) => {
         <div className="absolute z-10 mt-28 p-6 w-full bg-gray-100 bg-opacity-10 h-24 flex justify-end items-center">
             <div className="flex flex-col ">
                 <div className="flex flex-row p-6">
-                    {user.credentials.username==props.username?<AjoutAmi />:null}
+                    {user.credentials.username!=props.username?<AjoutAmi username={props.username} />:null}
                     <Modifier />
                 </div>
             </div>

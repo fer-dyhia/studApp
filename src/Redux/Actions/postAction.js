@@ -4,7 +4,7 @@ import axios from 'axios'
 export const getPosts = (dispatch, user) => {
     console.log(user)
     axios
-        .post(`/data/getAllPosts`, user)
+        .post(`https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/data/getAllPosts`, user)
         .then((res) => {
             dispatch({ type: GET_POST, payload: res.data })
         })
@@ -19,7 +19,7 @@ export const submitPost = (post, user, dispatch) => {
         image: post.image != '' ? post.image : '',
     }
     axios
-        .post('/data/postUserPost', Post)
+        .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/data/postUserPost', Post)
         .then((res) => {
             dispatch({ type: SUBMIT_POST, payload: res.data })
         })
@@ -29,7 +29,7 @@ export const submitPost = (post, user, dispatch) => {
 export const suppPost = (dispatch, postId) => {
     const post={postId:postId}
     axios
-        .post(`/data/suppUserPost`,post)
+        .post(`https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/data/suppUserPost`,post)
         .then((res) => {
             console.log("yes monsieur")
             dispatch({ type: DELETE_POST, payload: postId})
@@ -46,7 +46,7 @@ export const commentOnPost = (dispatch, comment) => {
     }
     console.log(User)
     axios
-        .post(`/data/commentOnPost/${postId}`, User)
+        .post(`https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/data/commentOnPost/${postId}`, User)
         .then((res) => {
             dispatch({ type: SUBMIT_COMMENT, payload: res.data })
         })
@@ -61,7 +61,7 @@ export const LikeOnPost = (dispatch, like) => {
     console.log(newLike)
     console.log(postId)
     axios
-        .post(`/data/likePostUser/${postId}`, newLike)
+        .post(`https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/data/likePostUser/${postId}`, newLike)
         .then((res) => {
             dispatch({ type: LIKE_POST, payload: res.data })
         })
@@ -74,7 +74,7 @@ export const UnlikeOnPost = (dispatch, like) => {
         }
         
          axios
-            .post(`/UnlikePostUser`, unLike)
+            .post(`https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/UnlikePostUser`, unLike)
             .then((res) => {
                 let unlike={
                     postId:unLike.postId,
@@ -88,7 +88,7 @@ export const UnlikeOnPost = (dispatch, like) => {
 export const getCommentOnPost = (dispatch, post) => {
     let id = { postId: post }
     axios
-        .post('./data/getCommentOnPost', id)
+        .post('https://europe-west1-socialapp-c6ffe.cloudfunctions.net/app/data/getCommentOnPost', id)
         .then((res) => {
             let comments = res.data
             dispatch({ type: COMMENT_POST, payload: { comments, post } })

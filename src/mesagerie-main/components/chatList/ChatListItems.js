@@ -5,7 +5,6 @@ import Avatar from "./Avatar";
 
 const  ChatListItems= (props)=> {
   const userData =useSelector((state)=>state.user)
-  console.log(props.image)
   const selectChat = (e) => {
     for (
       let index = 0;

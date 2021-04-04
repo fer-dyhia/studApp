@@ -28,7 +28,7 @@ export default function ProfilUser(props) {
         <div className='bg-gray-200 '>
             {infos.selectedUser!=null?
             <div>
-                <Header cover={Coverimg} img={infos.selectedUser.user.imageUrl} name={infos.selectedUser.user.displayName} />
+                <Header cover={Coverimg} img={infos.selectedUser.user.imageUrl} username={infos.selectedUser.user.username} name={infos.selectedUser.user.displayName} />
 
 <div className='grid grid-cols-3 '>
     <div className='bg-white'>

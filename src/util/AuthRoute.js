@@ -22,12 +22,12 @@ const AuthRoute = ({component: Component ,...rest}) => {
            
             
             if(isSignedIn|User.authenticated){
-                // if(user.emailVerified){
+                 if(user.emailVerified){
                     return <Component {...props} />
 
-                // }else {
-                //      return <NotVerification/>
-                // }
+                 }else {
+                      return <NotVerification/>
+                 }
                
 
             }else{

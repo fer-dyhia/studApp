@@ -26,7 +26,7 @@ const Header = (props) => {
         img={props.img}
       />
 
-      <Funct username={props.name} />
+      <Funct username={props.username} />
     </div>
   );
 };

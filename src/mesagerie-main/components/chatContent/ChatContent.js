@@ -122,6 +122,7 @@ const ChatContent = (props) => {
                       itm.sourceName == user.credentials.username ? "me" : "no"
                     }
                     imageUrl={itm.imageUrl}
+                    creatAt={itm.creatAt}
                     msg={itm.body}
                     image={props.image}
                   />
@@ -151,7 +152,7 @@ const ChatContent = (props) => {
             onKeyPress={EnterSend}
             onFocus={focus}
           />
-          <button className="btnSendMsg" id="sendMsgBtn">
+          <button className="btnSendMsg" id="sendMsgBtn" onClick={send}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

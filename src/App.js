@@ -35,10 +35,9 @@ const App = () => {
                         <Route path='/' exact component={dashboard} />
                         <Route path='/signin' component={Signin} />
                         <Route path='/signup' component={Signup} />
-                        <Route path='/messagerie-main' component={ChatBody} />
                         <AuthRoute path='/filActualite' component={filActualite} />
                         <AuthRoute path='/iterfaceUser' component={iterfaceUser} />
-                        <AuthRoute path='/messagerie' component={messagerie} />
+                        <AuthRoute path='/messagerie' component={ChatBody} />
                         <AuthRoute path='/profilUser/:username' component={profilUser} />
                         <AuthRoute path='/forgotPass' component={ForgotPass} />
                         <AuthRoute path='/card' component={Card} />

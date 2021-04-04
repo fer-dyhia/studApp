@@ -62,7 +62,7 @@ const ChatList = (props) => {
         </div>
         <button
           onClick={(e) => showModal(e)}
-          className="p-1.5 rounded-lg text-white transition duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 focus:outline-none"
+          className="p-1.5 rounded-full hover: shadow-md text-white transition duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 focus:outline-none"
         >
           New Message
         </button>
@@ -77,7 +77,7 @@ const ChatList = (props) => {
           );
           let Username = item.Users[1 - index];
           let Image = item.Images[1 - index];
-          console.log(Image);
+         
           return (
             <ChatListItems
               name={item.convId}
